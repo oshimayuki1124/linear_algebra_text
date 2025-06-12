@@ -1,0 +1,241 @@
+\section{行列とその演算}
+
+この章では、線形代数におけるもう一つの主役である\emph{行列}の定義と、基本的な演算について学びます。行列は、複数のベクトルをまとめて扱ったり、ベクトルの変換を表現したりするのに使われます。
+
+\subsection{行列の定義}
+
+\emph{行列}とは、数や文字を長方形に並べたものです。
+
+\begin{dfn}[行列]
+$m$ 行 $n$ 列の行列 $\bm{A}$ は、実数（または複素数）の要素 $a_{ij}$ を $m$ 個の行と $n$ 個の列に並べたもので、次のように表されます。
+\[
+\bm{A} = \begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}
+\]
+ここで、$a_{ij}$ は行列 $\bm{A}$ の $i$ 行 $j$ 列目の要素（成分）を表します。$m$ を\emph{行数}、$n$ を\emph{列数}と呼び、行列のサイズを $m \times n$ 行列と表します。
+\end{dfn}
+\begin{ex}
+\begin{itemize}
+\item $2 \times 3$ 行列: $\bm{A} = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix}$ （2行3列）
+\item $3 \times 1$ 行列: $\bm{b} = \begin{pmatrix} 7 \\ 8 \\ 9 \end{pmatrix}$ （これは3次元の列ベクトルと見なせます）
+\item $1 \times 2$ 行列: $\bm{c} = \begin{pmatrix} 10 & 11 \end{pmatrix}$ （これは2次元の行ベクトルと見なせます）
+\end{itemize}
+\end{ex}
+\begin{dfn}[行列の等しさ]
+2つの $m \times n$ 行列 $\bm{A} = (a_{ij})$ と $\bm{B} = (b_{ij})$ が\emph{等しい}とは、それらの対応するすべての要素が等しいことをいいます。すなわち、$a_{ij} = b_{ij}$ がすべての $i=1, \ldots, m$ および $j=1, \ldots, n$ について成り立つとき、$\bm{A} = \bm{B}$ と定義します。
+\end{dfn}
+\begin{ex}
+$\begin{pmatrix} x & y \\ z & w \end{pmatrix} = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$ ならば、$x=1,\ y=2,\ z=3,\ w=4$ です。
+\end{ex}
+\begin{dfn}[零行列]
+すべての要素が $0$ である $m \times n$ 行列を\emph{零行列}といい、$\bm{O}$（または $\bm{O}_{m \times n}$）で表します。
+\end{dfn}
+\begin{ex}
+$2 \times 2$ 零行列: $\bm{O} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$
+\end{ex}
+
+\subsection{行列の基本的な演算と性質}
+
+行列には、ベクトルの演算と同様に、和、スカラー倍、そして特有の積（掛け算）が定義されます。
+
+\subsubsection{行列の和（足し算）}
+\begin{dfn}[行列の和]
+同じサイズの2つの行列 $\bm{A} = (a_{ij})$ と $\bm{B} = (b_{ij})$ の和 $\bm{A} + \bm{B}$ は、対応する要素同士を足し合わせることで定義されます。和の行列の $(i,j)$ 要素は $a_{ij} + b_{ij}$ です。
+\[\bm{A} + \bm{B} = (a_{ij} + b_{ij})\]
+\end{dfn}
+\begin{rmk*}
+行列の和は、同じ行数と同じ列数を持つ行列同士でしか定義できません。
+\end{rmk*}
+\begin{ex}
+$\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} + \begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix} = \begin{pmatrix} 1+5 & 2+6 \\ 3+7 & 4+8 \end{pmatrix} = \begin{pmatrix} 6 & 8 \\ 10 & 12 \end{pmatrix}$
+\end{ex}
+\begin{thm}[行列の和の性質]
+行列の和は、ベクトルの和と同様に以下の性質を持ちます。
+\begin{enumerate}
+\item \emph{交換法則}: $\bm{A} + \bm{B} = \bm{B} + \bm{A}$
+\item \emph{結合法則}: $(\bm{A} + \bm{B}) + \bm{C} = \bm{A} + (\bm{B} + \bm{C})$
+\item \emph{零行列の存在}: 任意の行列 $\bm{A}$ に対して、$\bm{A} + \bm{O} = \bm{A}$ となる零行列 $\bm{O}$ が存在する。
+\item \emph{逆行列（加法逆元）の存在}: 任意の行列 $\bm{A}$ に対して、$\bm{A} + (-\bm{A}) = \bm{O}$ となる行列 $-\bm{A}$ が存在する。ここで、$-\bm{A}$ は $\bm{A}$ の各要素に $-1$ を掛けた行列 $(-a_{ij})$ です。
+\end{enumerate}
+\begin{proof*}
+ここでは、\emph{交換法則}の証明を示します。その他の性質は、同様の方法で要素計算によって証明できます（一部は練習問題とします）。\par
+$\bm{A} = (a_{ij})$ と $\bm{B} = (b_{ij})$ とする。定義 3.4 より、$\bm{A} + \bm{B}$ の $(i,j)$ 要素は $a_{ij} + b_{ij}$ である。実数の足し算は交換法則を満たす（$x+y = y+x$）ので、$a_{ij} + b_{ij} = b_{ij} + a_{ij}$ がすべての $i,j$ について成り立つ。よって、$\bm{A} + \bm{B}$ の $(i,j)$ 要素は $\bm{B} + \bm{A}$ の $(i,j)$ 要素と等しい。定義 3.2（行列の等しさ）より、$\bm{A} + \bm{B} = \bm{B} + \bm{A}$ が成り立つ。(証明終)
+\end{proof*}
+\end{thm}
+
+\subsubsection{行列のスカラー倍（定数倍）と行列の差}
+\begin{dfn}[行列のスカラー倍]
+行列 $\bm{A} = (a_{ij})$ と実数 $k$（スカラー）の積 $k\bm{A}$ は、行列の各要素に $k$ を掛けることで定義されます。積の行列の $(i,j)$ 要素は $k a_{ij}$ です。
+\[k\bm{A} = (k a_{ij})\]
+\end{dfn}
+\begin{ex}
+$2 \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} = \begin{pmatrix} 2 \times 1 & 2 \times 2 \\ 2 \times 3 & 2 \times 4 \end{pmatrix} = \begin{pmatrix} 2 & 4 \\ 6 & 8 \end{pmatrix}$
+\end{ex}
+\begin{thm}[行列のスカラー倍の性質]
+行列のスカラー倍は、以下の性質を持ちます。
+\begin{enumerate}
+\item \emph{結合法則}: $k(l\bm{A}) = (kl)\bm{A}$
+\item \emph{分配法則}: $(k+l)\bm{A} = k\bm{A} + l\bm{A}$ および $k(\bm{A}+\bm{B}) = k\bm{A} + k\bm{B}$
+\item \emph{単位元}: $1\bm{A} = \bm{A}$
+\item \emph{零元}: $0\bm{A} = \bm{O}$, $k\bm{O} = \bm{O}$
+\end{enumerate}
+\begin{proof*}
+ここでは、\emph{分配法則（行列について）} の証明を示します。その他の性質は、同様の方法で要素計算によって証明できます（一部は練習問題とします）。\par
+$\bm{A} = (a_{ij})$ と $\bm{B} = (b_{ij})$ とスカラー $k$ とする。定義 3.4 より、$\bm{A} + \bm{B}$ の $(i,j)$ 要素は $a_{ij} + b_{ij}$ である。定義 3.5 より、$k(\bm{A} + \bm{B})$ の $(i,j)$ 要素は $k(a_{ij} + b_{ij})$ である。実数の掛け算は分配法則を満たすので、$k(a_{ij} + b_{ij}) = k a_{ij} + k b_{ij}$ が成り立つ。一方、$k\bm{A}$ の $(i,j)$ 要素は $k a_{ij}$、 $k\bm{B}$ の $(i,j)$ 要素は $k b_{ij}$ である。したがって、$k\bm{A} + k\bm{B}$ の $(i,j)$ 要素は $k a_{ij} + k b_{ij}$ である。両者の $(i,j)$ 要素が等しいため、定義 3.2 より $k(\bm{A}+\bm{B}) = k\bm{A} + k\bm{B}$ が成り立つ。(証明終)
+\end{proof*}
+\end{thm}
+
+行列の差 $\bm{A} - \bm{B}$ は、\emph{行列の和}と\emph{スカラー倍（加法逆元）}を組み合わせて定義されます。
+すなわち、$\bm{A} - \bm{B} = \bm{A} + (-\bm{B})$ です。
+これを要素で書くと、$\bm{A} - \bm{B} = (a_{ij} - b_{ij})$ です。
+
+\begin{ex}
+$\begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix} - \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} = \begin{pmatrix} 5-1 & 6-2 \\ 7-3 & 8-4 \end{pmatrix} = \begin{pmatrix} 4 & 4 \\ 4 & 4 \end{pmatrix}$
+\end{ex}
+
+\subsubsection{行列の積（掛け算）}
+行列の積は、これまでの和やスカラー倍とは異なり、少し複雑な定義を持ちます。しかし、その定義には深い意味があり、線形変換の合成などを自然に表現できます。
+
+\begin{dfn}[行列の積]
+$m \times l$ 行列 $\bm{A} = (a_{ij})$ と $l \times n$ 行列 $\bm{B} = (b_{jk})$ の積 $\bm{C} = \bm{A}\bm{B}$ は、$m \times n$ 行列として定義されます。積の行列 $\bm{C}$ の $(i,k)$ 要素 $c_{ik}$ は、$\bm{A}$ の $i$ 行目の要素と $\bm{B}$ の $k$ 列目の要素をそれぞれ掛け合わせて足し合わせたものです。
+\[c_{ik} = \sum_{j=1}^{l} a_{ij} b_{jk} = a_{i1}b_{1k} + a_{i2}b_{2k} + \dots + a_{il}b_{lk}\]
+\end{dfn}
+\begin{rmk*}
+行列の積 $\bm{A}\bm{B}$ は、$\bm{A}$ の\emph{列数}と $\bm{B}$ の\emph{行数}が一致する場合にのみ定義されます。結果として得られる行列の行数は $\bm{A}$ の行数、列数は $\bm{B}$ の列数になります。
+\[(\text{m} \times \underline{\text{l}}) \times (\underline{\text{l}} \times \text{n}) = (\text{m} \times \text{n})\]
+\end{rmk*}
+
+\begin{ex}
+$\bm{A} = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$ ($2 \times 2$ 行列) と $\bm{B} = \begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix}$ ($2 \times 2$ 行列) の積を計算してみましょう。
+\begin{gather*}
+\bm{C} = \bm{A}\bm{B} = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix}\\
+\begin{aligned}
+c_{11} &= (1 \times 5) + (2 \times 7) = 5 + 14 = 19\\
+c_{12} &= (1 \times 6) + (2 \times 8) = 6 + 16 = 22\\
+c_{21} &= (3 \times 5) + (4 \times 7) = 15 + 28 = 43\\
+c_{22} &= (3 \times 6) + (4 \times 8) = 18 + 32 = 50
+\end{aligned}
+\end{gather*}
+よって、
+\[\bm{A}\bm{B} = \begin{pmatrix} 19 & 22 \\ 43 & 50 \end{pmatrix}\]
+\end{ex}
+
+\begin{thm}[行列の積の性質]
+行列の積は、以下の性質を持ちます。
+\begin{enumerate}
+\item \emph{結合法則}: $(\bm{A}\bm{B})\bm{C} = \bm{A}(\bm{B}\bm{C})$
+    （積が定義される限り、計算の順序は問わない）
+\item \emph{分配法則}: $\bm{A}(\bm{B} + \bm{C}) = \bm{A}\bm{B} + \bm{A}\bm{C}$ および $(\bm{A} + \bm{B})\bm{C} = \bm{A}\bm{C} + \bm{B}\bm{C}$
+    （和と積の間には分配法則が成り立つ）
+\item \emph{スカラー倍との結合法則}: $k(\bm{A}\bm{B}) = (k\bm{A})\bm{B} = \bm{A}(k\bm{B})$
+    （スカラー倍は積のどこに適用しても結果は同じ）
+\end{enumerate}
+\begin{proof*}
+ここでは、\emph{分配法則}の一部である $\bm{A}(\bm{B} + \bm{C}) = \bm{A}\bm{B} + \bm{A}\bm{C}$ の証明を示します。その他の性質も同様に、積の定義と実数の演算法則を用いて要素ごとに証明できます（一部は練習問題とします）。\par
+$\bm{A}$ を $m \times l$ 行列、$\bm{B}$ と $\bm{C}$ を $l \times n$ 行列とする。
+$(\bm{B} + \bm{C})$ の $(j,k)$ 要素は $b_{jk} + c_{jk}$ である（定義 3.4）。
+積 $\bm{A}(\bm{B} + \bm{C})$ の $(i,k)$ 要素を考えると、定義 3.6 より、
+$$(\bm{A}(\bm{B} + \bm{C}))_{ik} = \sum_{j=1}^{l} a_{ij}(b_{jk} + c_{jk})$$実数の分配法則より $a_{ij}(b_{jk} + c_{jk}) = a_{ij}b_{jk} + a_{ij}c_{jk}$ なので、$$\sum_{j=1}^{l} (a_{ij}b_{jk} + a_{ij}c_{jk})$$実数の和の結合法則と交換法則（および分配法則）を適用すると、$$= \sum_{j=1}^{l} a_{ij}b_{jk} + \sum_{j=1}^{l} a_{ij}c_{jk}$$
+右辺の各項は、それぞれ $\bm{A}\bm{B}$ の $(i,k)$ 要素と $\bm{A}\bm{C}$ の $(i,k)$ 要素の定義（定義 3.6）に他ならない。
+したがって、
+$$(\bm{A}(\bm{B} + \bm{C}))_{ik} = (\bm{A}\bm{B})_{ik} + (\bm{A}\bm{C})_{ik}$$
+これは、行列の和の定義（定義 3.4）により、$(\bm{A}\bm{B} + \bm{A}\bm{C})$ の $(i,k)$ 要素と等しい。
+すべての要素が等しいため、定義 3.2 より $\bm{A}(\bm{B} + \bm{C}) = \bm{A}\bm{B} + \bm{A}\bm{C}$ が成り立つ。
+(証明終)
+\end{proof*}
+\end{thm}
+\begin{rmk*}
+行列の積は、一般に\emph{交換法則が成り立ちません}。つまり、$\bm{A}\bm{B} \neq \bm{B}\bm{A}$ であることがほとんどです。
+\end{rmk*}
+\begin{ex}[交換法則が成り立たない例]
+例3.15で $\bm{B}\bm{A}$ を計算してみましょう。
+\begin{gather*}
+\bm{B}\bm{A} = \begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}\\
+\begin{aligned}
+c'_{11} = (5 \times 1) + (6 \times 3) = 5 + 18 = 23\\
+c'_{12} = (5 \times 2) + (6 \times 4) = 10 + 24 = 34\\
+c'_{21} = (7 \times 1) + (8 \times 3) = 7 + 24 = 31\\
+c'_{22} = (7 \times 2) + (8 \times 4) = 14 + 32 = 46
+\end{aligned}
+\end{gather*}
+よって、
+\[\bm{B}\bm{A} = \begin{pmatrix} 23 & 34 \\ 31 & 46 \end{pmatrix}\]
+先ほどの $\bm{A}\bm{B}$ とは明らかに異なるため、$\bm{A}\bm{B} \neq \bm{B}\bm{A}$ です。
+\end{ex}
+
+\subsection{特殊な行列}
+行列の中には、特に重要な性質を持つものがあります。
+\begin{dfn}[正方行列]
+行数と列数が等しい行列を\emph{正方行列}と呼びます。$n \times n$ 行列の場合、「$n$次正方行列」といいます。
+\end{dfn}
+\begin{ex}
+$\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$ は2次正方行列です。
+\end{ex}
+\begin{dfn}[単位行列]
+正方行列であり、対角成分（$i=j$ の要素）がすべて $1$ で、その他の成分がすべて $0$ である行列を\emph{単位行列}と呼び、$\bm{I}$（または $\bm{I}_n$）で表します。
+$$\bm{I}_n = \begin{pmatrix}
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & 1
+\end{pmatrix}$$
+\end{dfn}
+\begin{thm}[単位行列の性質]
+任意の $m \times n$ 行列 $\bm{A}$ に対して、以下の関係が成り立ちます。
+\begin{enumerate}
+\item $\bm{I}_m \bm{A} = \bm{A}$
+\item $\bm{A} \bm{I}_n = \bm{A}$
+\end{enumerate}
+これは、単位行列が数の掛け算における $1$ のような役割を果たすことを意味します。
+\begin{proof*}
+ここでは、$\bm{I}_m \bm{A} = \bm{A}$ の証明を示します。\par
+$\bm{I}_m$ を $m \times m$ 単位行列、$\bm{A}$ を $m \times n$ 行列とする。
+積 $\bm{I}_m \bm{A}$ の $(i,k)$ 要素を考える。定義 3.6 より、
+\[(\bm{I}_m \bm{A})_{ik} = \sum_{j=1}^{m} (\bm{I}_m)_{ij} a_{jk}\]
+ここで、単位行列の定義（定義 3.8）より、$ (\bm{I}_m)_{ij} $ は $i=j$ のとき $1$、それ以外のとき $0$ である。したがって、和の中の $j$ について、 $j=i$ の項のみが残り、それ以外の項は $0$ になる。
+\[\sum_{j=1}^{m} (\bm{I}_m)_{ij} a_{jk} = (\bm{I}_m)_{ii} a_{ik} = 1 \cdot a_{ik} = a_{ik}\]
+これは行列 $\bm{A}$ の $(i,k)$ 要素に等しい。すべての要素が等しいため、定義 3.2 より $\bm{I}_m \bm{A} = \bm{A}$ が成り立つ。(証明終)
+\end{proof*}
+\end{thm}
+
+\subsection{練習問題}
+\begin{quiz}
+次の行列を計算しなさい。
+\begin{enumerate}
+\item $\bm{A} = \begin{pmatrix} 1 & 0 \\ 2 & 3 \end{pmatrix},\ \bm{B} = \begin{pmatrix} 4 & 5 \\ 6 & 7 \end{pmatrix}$ のとき、$\bm{A} + \bm{B}$
+\item $\bm{C} = \begin{pmatrix} 3 & -1 & 2 \\ 0 & 4 & 1 \end{pmatrix},\ \bm{D} = \begin{pmatrix} 1 & 2 & -3 \\ 5 & -4 & 0 \end{pmatrix}$ のとき、$\bm{C} - \bm{D}$
+\end{enumerate}
+\end{quiz}
+
+\begin{quiz}
+次のスカラー倍を計算しなさい。
+\begin{enumerate}
+\item $k = 3,\ \bm{A} = \begin{pmatrix} 1 & -2 \\ 0 & 4 \end{pmatrix}$ のとき、$k\bm{A}$
+\item $k = -0.5,\ \bm{B} = \begin{pmatrix} 8 & 10 & 4 \\ -2 & 6 & 0 \end{pmatrix}$ のとき、$k\bm{B}$
+\end{enumerate}
+\end{quiz}
+
+\begin{quiz}
+$\bm{X} = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix},\ \bm{Y} = \begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix}$ とするとき、次の行列を計算しなさい。
+\begin{enumerate}
+\item $2\bm{X} + \bm{Y}$
+\item $\bm{X} - 3\bm{Y}$
+\end{enumerate}
+\end{quiz}
+
+\begin{quiz}
+次の行列の積を計算しなさい。
+\begin{enumerate}
+\item $\bm{A} = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix},\ \bm{B} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ のとき、$\bm{A}\bm{B}$ と $\bm{B}\bm{A}$
+\item $\bm{C} = \begin{pmatrix} 1 & 2 & 3 \end{pmatrix},\ \bm{D} = \begin{pmatrix} 4 \\ 5 \\ 6 \end{pmatrix}$ のとき、$\bm{C}\bm{D}$ と $\bm{D}\bm{C}$
+\item $\bm{E} = \begin{pmatrix} 2 & 0 \\ -1 & 3 \end{pmatrix},\ \bm{F} = \begin{pmatrix} 1 & -2 \\ 0 & 4 \end{pmatrix}$ のとき、$\bm{E}\bm{F}$
+\end{enumerate}
+\end{quiz}
+
+\begin{quiz}[定理の証明演習]
+定理 3.1、定理 3.2、定理 3.3、定理 3.4 の残りの性質を、要素計算を用いて各自で証明しなさい。
+\end{quiz}

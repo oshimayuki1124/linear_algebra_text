@@ -1,0 +1,161 @@
+\section{ベクトルの大きさと内積}
+
+この章では、ベクトルの「長さ」を測る\emph{大きさ（ノルム）}と、2つのベクトルがどれくらい「同じ方向を向いているか」を示す\emph{内積（ドット積）}について学びます。
+
+\subsection{ベクトルの大きさ（ノルム）}
+
+ベクトルの\emph{大きさ}は、そのベクトルの「長さ」を表す量です。数学的には\emph{ノルム}とも呼ばれ、ベクトル空間における距離の概念の基礎となります。
+\begin{dfn}[ベクトルの大きさ - ノルム]
+$n$次元ベクトル $\bm{a} = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}$ の大きさ（ノルム）は、記号 $|\bm{a}|$ または $||\bm{a}||$ で表され、各成分の2乗の和の正の平方根として定義されます。
+
+\[|\bm{a}| = \sqrt{a_1^2 + a_2^2 + \dots + a_n^2}\]
+\end{dfn}
+
+\emph{幾何学的解釈}:この定義は、2次元や3次元の空間では、\emph{三平方の定理（ピタゴラスの定理）}を一般化したものです。
+
+\begin{ex}
+\begin{itemize}
+\item $\bm{a} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}$ の大きさ:
+    \[|\bm{a}| = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5\]
+    これは、直角三角形の斜辺の長さと一致します。
+
+\item $\bm{b} = \begin{pmatrix} 1 \\ -2 \\ 2 \end{pmatrix}$ の大きさ:
+    \[|\bm{b}| = \sqrt{1^2 + (-2)^2 + 2^2} = \sqrt{1 + 4 + 4} = \sqrt{9} = 3\]
+\end{itemize}
+\end{ex}
+
+\subsection{単位ベクトル}
+\begin{dfn}[単位ベクトル]
+大きさが $1$ であるベクトルを\emph{単位ベクトル}と定義します。
+\end{dfn}
+\begin{thm}[単位ベクトルの正規化]
+零ベクトルでない任意のベクトル $\bm{a}$ に対して、$\bm{a}$ と同じ向きを持つ単位ベクトル $\bm{e}$ は、$\bm{a}$ をその大きさで割ることで得られます。この操作を\emph{正規化}と呼びます。
+\[\bm{e} = \frac{\bm{a}}{|\bm{a}|} = \frac{1}{|\bm{a}|} \bm{a}\]
+\begin{proof*}
+$\bm{e}$ の大きさを計算してみます。
+$|\bm{e}| = \left| \frac{1}{|\bm{a}|} \bm{a} \right|$。
+スカラー倍の性質（定理 1.2 の $|k\bm{v}| = |k||\bm{v}|$ に相当する性質）より、
+$|\bm{e}| = \left| \frac{1}{|\bm{a}|} \right| |\bm{a}|$。
+$|\bm{a}|$ は大きさであり常に正の値なので、$|\frac{1}{|\bm{a}|}| = \frac{1}{|\bm{a}|}$ です。
+よって、$|\bm{e}| = \frac{1}{|\bm{a}|} |\bm{a}| = 1$ となり、確かに単位ベクトルです。
+(証明終)
+\end{proof*}
+\end{thm}
+\begin{ex}
+$\bm{a} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}$ と同じ向きの単位ベクトルを求めます。
+まず $|\bm{a}| = 5$ です。
+\[\bm{e} = \frac{1}{5} \begin{pmatrix} 3 \\ 4 \end{pmatrix} = \begin{pmatrix} 3/5 \\ 4/5 \end{pmatrix}\]
+この $\bm{e}$ の大きさは $\sqrt{(3/5)^2 + (4/5)^2} = \sqrt{9/25 + 16/25} = \sqrt{25/25} = \sqrt{1} = 1$ となり、定義通り大きさが $1$ です。
+\end{ex}
+
+\subsection{内積（ドット積）}
+\emph{内積}は、2つのベクトルから\emph{スカラー（数）}を求める計算です。ベクトル同士の「掛け算」と考えることができますが、結果がベクトルではなく数になる点が重要です。
+\begin{dfn}[内積 - 成分による計算]
+$n$次元ベクトル $\bm{a} = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}$ と $\bm{b} = \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{pmatrix}$ の\emph{内積（またはドット積）}は、記号 $\bm{a} \cdot \bm{b}$ で表され、対応する成分同士を掛けて全て足し合わせることで定義されます。
+\[\bm{a} \cdot \bm{b} = a_1 b_1 + a_2 b_2 + \dots + a_n b_n\]
+\end{dfn}
+\begin{ex}
+\begin{itemize}
+\item $\bm{a} = \begin{pmatrix} 3 \\ 2 \end{pmatrix},\ \bm{b} = \begin{pmatrix} 1 \\ 4 \end{pmatrix}$ の内積:
+    \[\bm{a} \cdot \bm{b} = (3 \times 1) + (2 \times 4) = 3 + 8 = 11\]
+
+\item $\bm{e} = \begin{pmatrix} 1 \\ 0 \\ -3 \end{pmatrix},\ \bm{f} = \begin{pmatrix} 5 \\ 2 \\ 1 \end{pmatrix}$ の内積:
+    \[\bm{e} \cdot \bm{f} = (1 \times 5) + (0 \times 2) + ((-3) \times 1) = 5 + 0 - 3 = 2\]
+\end{itemize}
+\end{ex}
+
+\subsection{内積の性質と幾何学的意味}
+内積は、2つのベクトルのなす角と密接な関係があります。
+\begin{thm}[コーシー＝シュワルツの不等式]
+任意の$n$次元ベクトル $\bm{a}$ と $\bm{b}$ に対して、以下の不等式が成り立つ。
+\[(\bm{a} \cdot \bm{b})^2 \le |\bm{a}|^2 |\bm{b}|^2\]
+等号が成り立つのは、$\bm{a}$ と $\bm{b}$ が線形従属（一方が他方のスカラー倍で表せる、すなわち平行である）である場合に限る。
+\begin{proof*}
+実数 $t$ を用いてベクトル $\bm{v} = \bm{a} + t\bm{b}$ を考えます。ベクトルの大きさは常に非負なので、$|\bm{v}|^2 \ge 0$ です。
+\begin{align*}
+|\bm{v}|^2 &= |\bm{a} + t\bm{b}|^2 = (\bm{a} + t\bm{b}) \cdot (\bm{a} + t\bm{b})\\
+&= \bm{a} \cdot \bm{a} + t(\bm{a} \cdot \bm{b}) + t(\bm{b} \cdot \bm{a}) + t^2(\bm{b} \cdot \bm{b})\\
+&= |\bm{a}|^2 + 2t(\bm{a} \cdot \bm{b}) + t^2|\bm{b}|^2
+\end{align*}
+この式は $t$ に関する二次関数 $f(t) = |\bm{b}|^2 t^2 + 2(\bm{a} \cdot \bm{b}) t + |\bm{a}|^2$ であり、常に $f(t) \ge 0$ を満たします。これは、$t$ に関する二次方程式 $f(t) = 0$ が実数解を持たないか、または重解を持つことを意味します。したがって、判別式 $D$ が $D \le 0$ でなければなりません。
+\begin{gather*}
+\begin{aligned}
+D &= (2(\bm{a} \cdot \bm{b}))^2 - 4|\bm{b}|^2 |\bm{a}|^2\\
+&= 4(\bm{a} \cdot \bm{b})^2 - 4|\bm{a}|^2 |\bm{b}|^2 \le 0
+\end{aligned}\\
+4(\bm{a} \cdot \bm{b})^2 \le 4|\bm{a}|^2 |\bm{b}|^2\\
+(\bm{a} \cdot \bm{b})^2 \le |\bm{a}|^2 |\bm{b}|^2
+\end{gather*}
+等号が成り立つのは、判別式が $0$ になる場合、すなわち $\bm{a} + t\bm{b} = \bm{0}$ となる実数 $t$ が存在する場合であり、これは $\bm{a}$ と $\bm{b}$ が線形従属であることを意味します。
+(証明終)
+\end{proof*}
+\end{thm}
+\begin{dfn}
+零ベクトルでない2つのベクトル $\bm{a}$ と $\bm{b}$ のなす角 $\theta$ は、\emph{コーシー＝シュワルツの不等式}（定理 2.2）によって $\left| \frac{\bm{a} \cdot \bm{b}}{|\bm{a}| |\bm{b}|} \right| \le 1$ が保証されるため、その値を $\cos\theta$ として、以下のように定義されます。
+\[\cos\theta = \frac{\bm{a} \cdot \bm{b}}{|\bm{a}| |\bm{b}|} \quad (0 \le \theta \le \pi)\]
+\end{dfn}
+\begin{thm}[内積とベクトルのなす角の関係]
+零ベクトルでない2つのベクトル $\bm{a}$ と $\bm{b}$ のなす角を $\theta$ とすると、内積は次の式で表すことができる。
+\[\bm{a} \cdot \bm{b} = |\bm{a}| |\bm{b}| \cos\theta\]
+\begin{proof*}
+定義 2.4 $\cos\theta = \frac{\bm{a} \cdot \bm{b}}{|\bm{a}| |\bm{b}|}$ の両辺に $|\bm{a}| |\bm{b}|$ を掛けることで、直ちに得られる。
+\end{proof*}
+\end{thm}
+\emph{幾何学的解釈（2次元の余弦定理との整合性）}:この定義は、2次元における直感的な幾何学（余弦定理）と矛盾しません。実際、2次元のベクトル $\bm{a}, \bm{b}$ に対して、これらのベクトルと原点で構成される三角形に余弦定理を適用すると、定義 2.3 の成分計算による内積が $|\bm{a}||\bm{b}|\cos\theta$ と一致することが確認できます。
+
+\begin{thm}[ベクトルの直交条件]
+零ベクトルでない2つのベクトル $\bm{a}$ と $\bm{b}$ が\emph{直交する（垂直に交わる）}ための必要十分条件は、それらの内積が $0$ であることです。
+\[\bm{a} \perp \bm{b} \iff \bm{a} \cdot \bm{b} = 0\]
+\begin{proof*}
+定理 2.2 より $\bm{a} \cdot \bm{b} = |\bm{a}| |\bm{b}| \cos\theta$ です。
+\begin{itemize}
+\item \emph{$(\Rightarrow)$ $\bm{a} \perp \bm{b}$ ならば $\bm{a} \cdot \bm{b} = 0$ であることの証明}:\\
+    $\bm{a}$ と $\bm{b}$ が直交するとき、それらのなす角は $\theta = \pi/2$です。
+    このとき $\cos \pi/2 = 0$ となるため、
+    $\bm{a} \cdot \bm{b} = |\bm{a}| |\bm{b}| \times 0 = 0$
+    が成り立ちます。
+\item \emph{$(\Leftarrow)$ $\bm{a} \cdot \bm{b} = 0$ ならば $\bm{a} \perp \bm{b}$ であることの証明}:\\
+    $\bm{a} \cdot \bm{b} = 0$ と仮定します。零ベクトルでないと仮定しているので、$|\bm{a}| \neq 0$ かつ $|\bm{b}| \neq 0$ です。
+    定理 2.2 の式 $\bm{a} \cdot \bm{b} = |\bm{a}| |\bm{b}| \cos\theta$ に代入すると、
+    $0 = |\bm{a}| |\bm{b}| \cos\theta$
+    $|\bm{a}| \neq 0$ かつ $|\bm{b}| \neq 0$ なので、$\cos\theta = 0$ でなければなりません。
+    $0 \le \theta \le \pi$ の範囲で $\cos\theta = 0$ となるのは $\theta = \pi/2$のときのみです。
+    したがって、$\bm{a}$ と $\bm{b}$ は直交します。
+\end{itemize}
+(証明終)
+\end{proof*}
+\end{thm}
+\begin{ex}
+$\bm{u} = \begin{pmatrix} 2 \\ -1 \end{pmatrix}$ と $\bm{v} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$ が直交するかを確認します。
+\[\bm{u} \cdot \bm{v} = (2 \times 1) + ((-1) \times 2) = 2 - 2 = 0\]
+内積が $0$ なので、定理 2.3 により $\bm{u}$ と $\bm{v}$ は直交します。
+\end{ex}
+
+\subsection{練習問題}
+\begin{quiz}
+次のベクトルの大きさ（ノルム）を求めなさい。
+\begin{enumerate}
+\item $\bm{a} = \begin{pmatrix} 5 \\ 12 \end{pmatrix}$
+\item $\bm{b} = \begin{pmatrix} 1 \\ -1 \\ \sqrt{2} \end{pmatrix}$
+\end{enumerate}
+\end{quiz}
+
+\begin{quiz}
+次の内積を求めなさい。
+\begin{enumerate}
+\item $\bm{c} = \begin{pmatrix} 2 \\ 5 \end{pmatrix},\ \bm{d} = \begin{pmatrix} 4 \\ -1 \end{pmatrix}$
+\item $\bm{e} = \begin{pmatrix} 1 \\ 0 \\ -3 \end{pmatrix},\ \bm{f} = \begin{pmatrix} 5 \\ 2 \\ 1 \end{pmatrix}$
+\end{enumerate}
+\end{quiz}
+
+\begin{quiz}
+次の2つのベクトルは直交するかどうか、内積を計算して答えなさい。
+\begin{enumerate}
+\item $\bm{u} = \begin{pmatrix} 3 \\ -2 \end{pmatrix},\ \bm{v} = \begin{pmatrix} 4 \\ 6 \end{pmatrix}$
+\item $\bm{s} = \begin{pmatrix} 1 \\ -2 \\ 3 \end{pmatrix},\ \bm{t} = \begin{pmatrix} 4 \\ 5 \\ 2 \end{pmatrix}$
+\end{enumerate}
+\end{quiz}
+
+\begin{quiz}
+$\bm{a} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$ と同じ向きを持つ単位ベクトルを求めなさい。
+\end{quiz}
