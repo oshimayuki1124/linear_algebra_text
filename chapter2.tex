@@ -1,7 +1,11 @@
-\section{ベクトルの大きさと内積}
+\section{ベクトルの大きさと内積} \setcounter{ex}{0}
+
 この章では、ベクトルの「長さ」を測る\emph{大きさ（ノルム）}と、2つのベクトルがどれくらい「同じ方向を向いているか」を示す\emph{内積（ドット積）}について学びます。
+
 \subsection{ベクトルの大きさ（ノルム）}
+
 ベクトルの\emph{大きさ}は、そのベクトルの「長さ」を表す量です。数学的には\emph{ノルム}とも呼ばれ、ベクトル空間における距離の概念の基礎となります。
+
 \begin{dfn}[ベクトルの大きさ - ノルム]
 $n$次元ベクトル $\bm{a} = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}$ の大きさ（ノルム）は、記号 $|\bm{a}|$ または $||\bm{a}||$ で表され、各成分の2乗の和の正の平方根として定義されます。
 \[|\bm{a}| = \sqrt{a_1^2 + a_2^2 + \dots + a_n^2}\]
@@ -20,6 +24,7 @@ $n$次元ベクトル $\bm{a} = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end
 \end{ex}
 
 \subsection{単位ベクトル}
+
 \begin{dfn}[単位ベクトル] \label{unit_vector}
 大きさが $1$ であるベクトルを\emph{単位ベクトル}と定義します。
 \end{dfn}
@@ -28,25 +33,20 @@ $n$次元ベクトル $\bm{a} = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end
 零ベクトルでない任意のベクトル $\bm{a}$ に対して、$\bm{a}$ と同じ向きを持つ単位ベクトル $\bm{e}$ は、$\bm{a}$ をその大きさで割ることで得られます。この操作を\emph{正規化}と呼びます。
 \[\bm{e} = \frac{\bm{a}}{|\bm{a}|} = \frac{1}{|\bm{a}|} \bm{a}\]
 \begin{proof*}
-$\bm{e}$ の大きさを計算してみます。
-$|\bm{e}| = \left| \frac{1}{|\bm{a}|} \bm{a} \right|$。
-スカラー倍の性質（定理\ref{vector_scalar_property}の $|k\bm{v}| = |k||\bm{v}|$ に相当する性質）より、
-$|\bm{e}| = \left| \frac{1}{|\bm{a}|} \right| |\bm{a}|$。
-$|\bm{a}|$ は大きさであり常に正の値なので、$|\frac{1}{|\bm{a}|}| = \frac{1}{|\bm{a}|}$ です。
-よって、$|\bm{e}| = \frac{1}{|\bm{a}|} |\bm{a}| = 1$ となり、確かに単位ベクトルです。
-(証明終)
+$|\bm{e}| = \left| \frac{1}{|\bm{a}|} \bm{a} \right|$であり，スカラー倍の性質（定理\ref{vector_scalar_property}の $|k\bm{v}| = |k||\bm{v}|$ に相当する性質）より、$|\bm{e}| = \left| \frac{1}{|\bm{a}|} \right| |\bm{a}|$。$|\bm{a}|$ は大きさであり常に正の値なので、$\left|\frac{1}{|\bm{a}|}\right| = \frac{1}{|\bm{a}|}$ です。よって、$|\bm{e}| = \frac{1}{|\bm{a}|} |\bm{a}| = 1$ となり、確かに単位ベクトルです。(証明終)
 \end{proof*}
 \end{thm}
 
 \begin{ex}
-$\bm{a} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}$ と同じ向きの単位ベクトルを求めます。
-まず $|\bm{a}| = 5$ です。
+$\bm{a} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}$ と同じ向きの単位ベクトルを求めます。まず $|\bm{a}| = 5$ です。
 \[\bm{e} = \frac{1}{5} \begin{pmatrix} 3 \\ 4 \end{pmatrix} = \begin{pmatrix} 3/5 \\ 4/5 \end{pmatrix}\]
 この $\bm{e}$ の大きさは $\sqrt{(3/5)^2 + (4/5)^2} = \sqrt{9/25 + 16/25} = \sqrt{25/25} = \sqrt{1} = 1$ となり、定義通り大きさが $1$ です。
 \end{ex}
 
 \subsection{内積（ドット積）}
+
 \emph{内積}は、2つのベクトルから\emph{スカラー（数）}を求める計算です。ベクトル同士の「掛け算」と考えることができますが、結果がベクトルではなく数になる点が重要です。
+
 \begin{dfn}[内積 - 成分による計算] \label{inner_product}
 $n$次元ベクトル $\bm{a} = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}$ と $\bm{b} = \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{pmatrix}$ の\emph{内積（またはドット積）}は、記号 $\bm{a} \cdot \bm{b}$ で表され、対応する成分同士を掛けて全て足し合わせることで定義されます。
 \[\bm{a} \cdot \bm{b} = a_1 b_1 + a_2 b_2 + \dots + a_n b_n\]
@@ -56,14 +56,15 @@ $n$次元ベクトル $\bm{a} = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end
 \begin{itemize}
 \item $\bm{a} = \begin{pmatrix} 3 \\ 2 \end{pmatrix},\ \bm{b} = \begin{pmatrix} 1 \\ 4 \end{pmatrix}$ の内積:
     \[\bm{a} \cdot \bm{b} = (3 \times 1) + (2 \times 4) = 3 + 8 = 11\]
-
 \item $\bm{e} = \begin{pmatrix} 1 \\ 0 \\ -3 \end{pmatrix},\ \bm{f} = \begin{pmatrix} 5 \\ 2 \\ 1 \end{pmatrix}$ の内積:
     \[\bm{e} \cdot \bm{f} = (1 \times 5) + (0 \times 2) + ((-3) \times 1) = 5 + 0 - 3 = 2\]
 \end{itemize}
 \end{ex}
 
 \subsection{内積の性質と幾何学的意味}
+
 内積は、2つのベクトルのなす角と密接な関係があります。
+
 \begin{thm}[コーシー＝シュワルツの不等式] \label{Cauchy-Schwarz_inequality}
 任意の$n$次元ベクトル $\bm{a}$ と $\bm{b}$ に対して、以下の不等式が成り立つ。
 \[(\bm{a} \cdot \bm{b})^2 \le |\bm{a}|^2 |\bm{b}|^2\]
@@ -84,8 +85,7 @@ D &= (2(\bm{a} \cdot \bm{b}))^2 - 4|\bm{b}|^2 |\bm{a}|^2\\
 4(\bm{a} \cdot \bm{b})^2 \le 4|\bm{a}|^2 |\bm{b}|^2\\
 (\bm{a} \cdot \bm{b})^2 \le |\bm{a}|^2 |\bm{b}|^2
 \end{gather*}
-等号が成り立つのは、判別式が $0$ になる場合、すなわち $\bm{a} + t\bm{b} = \bm{0}$ となる実数 $t$ が存在する場合であり、これは $\bm{a}$ と $\bm{b}$ が線形従属であることを意味します。
-(証明終)
+等号が成り立つのは、判別式が $0$ になる場合、すなわち $\bm{a} + t\bm{b} = \bm{0}$ となる実数 $t$ が存在する場合であり、これは $\bm{a}$ と $\bm{b}$ が線形従属であることを意味します。(証明終)
 \end{proof*}
 \end{thm}
 
@@ -98,7 +98,7 @@ D &= (2(\bm{a} \cdot \bm{b}))^2 - 4|\bm{b}|^2 |\bm{a}|^2\\
 零ベクトルでない2つのベクトル $\bm{a}$ と $\bm{b}$ のなす角を $\theta$ とすると、内積は次の式で表すことができる。
 \[\bm{a} \cdot \bm{b} = |\bm{a}| |\bm{b}| \cos\theta\]
 \begin{proof*}
-定義\ref{cosine}$\cos\theta = \frac{\bm{a} \cdot \bm{b}}{|\bm{a}| |\bm{b}|}$ の両辺に $|\bm{a}| |\bm{b}|$ を掛けることで、直ちに得られる。
+定義\ref{cosine}の$\cos\theta = \frac{\bm{a} \cdot \bm{b}}{|\bm{a}| |\bm{b}|}$ の両辺に $|\bm{a}| |\bm{b}|$ を掛けることで、直ちに得られる。
 \end{proof*}
 \end{thm}
 
@@ -111,17 +111,11 @@ D &= (2(\bm{a} \cdot \bm{b}))^2 - 4|\bm{b}|^2 |\bm{a}|^2\\
 定理\ref{relation_of_inner_product_and_angle}より $\bm{a} \cdot \bm{b} = |\bm{a}| |\bm{b}| \cos\theta$ です。
 \begin{itemize}
 \item \emph{$(\Rightarrow)$ $\bm{a} \perp \bm{b}$ ならば $\bm{a} \cdot \bm{b} = 0$ であることの証明}:\\
-    $\bm{a}$ と $\bm{b}$ が直交するとき、それらのなす角は $\theta = \pi/2$です。
-    このとき $\cos \pi/2 = 0$ となるため、
-    $\bm{a} \cdot \bm{b} = |\bm{a}| |\bm{b}| \times 0 = 0$
-    が成り立ちます。
+    $\bm{a}$ と $\bm{b}$ が直交するとき、それらのなす角は $\theta = \pi/2$です。このとき $\cos\frac{\pi}{2} = 0$ となるため、$\bm{a} \cdot \bm{b} = |\bm{a}| |\bm{b}| \times 0 = 0$が成り立ちます。
 \item \emph{$(\Leftarrow)$ $\bm{a} \cdot \bm{b} = 0$ ならば $\bm{a} \perp \bm{b}$ であることの証明}:\\
-    $\bm{a} \cdot \bm{b} = 0$ と仮定します。零ベクトルでないと仮定しているので、$|\bm{a}| \neq 0$ かつ $|\bm{b}| \neq 0$ です。
-    定理\ref{relation_of_inner_product_and_angle}の式 $\bm{a} \cdot \bm{b} = |\bm{a}| |\bm{b}| \cos\theta$ に代入すると、
+    $\bm{a} \cdot \bm{b} = 0$ と仮定します。零ベクトルでないと仮定しているので、$|\bm{a}| \neq 0$ かつ $|\bm{b}| \neq 0$ です。定理\ref{relation_of_inner_product_and_angle}の式 $\bm{a} \cdot \bm{b} = |\bm{a}| |\bm{b}| \cos\theta$ に代入すると、
     \[0 = |\bm{a}| |\bm{b}| \cos\theta\]
-    $|\bm{a}| \neq 0$ かつ $|\bm{b}| \neq 0$ なので、$\cos\theta = 0$ でなければなりません。
-    $0 \le \theta \le \pi$ の範囲で $\cos\theta = 0$ となるのは $\theta = \pi/2$のときのみです。
-    したがって、$\bm{a}$ と $\bm{b}$ は直交します。
+    $|\bm{a}| \neq 0$ かつ $|\bm{b}| \neq 0$ なので、$\cos\theta = 0$ でなければなりません。$0 \le \theta \le \pi$ の範囲で $\cos\theta = 0$ となるのは $\theta = \pi/2$のときのみです。したがって、$\bm{a}$ と $\bm{b}$ は直交します。
 \end{itemize}
 (証明終)
 \end{proof*}
@@ -134,6 +128,7 @@ $\bm{u} = \begin{pmatrix} 2 \\ -1 \end{pmatrix}$ と $\bm{v} = \begin{pmatrix} 1
 \end{ex}
 
 \subsection{練習問題}
+
 \begin{quiz}
 次のベクトルの大きさ（ノルム）を求めなさい。
 \begin{enumerate}

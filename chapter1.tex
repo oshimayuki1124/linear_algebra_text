@@ -2,11 +2,13 @@
 
 \subsection{ベクトルの定義}
 
-\emph{ベクトル}とは、いくつかの実数を順序付けて並べたものです。これらの数を\emph{成分}と呼びます。$n$個の成分を持つベクトルを\emph{$n$次元ベクトル}といい、縦に並べた\emph{列ベクトル}として表します。
+\emph{ベクトル}とは、いくつかの実数を順序付けて並べたものです。これらの数を\emph{成分}と呼びます。$n$個の成分を持つベクトルを\emph{$n$次元ベクトル}といい、縦に並べた\emph{列ベクトル}として表します。また、横に並べた\emph{行ベクトル}として表すこともあります。
 \[\bm{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} \quad (v_1, v_2,\ldots,v_n\in\mathbb{R})\]
+\[\bm{w} = (w_1 \ w_2 \ \dots \ w_n) \quad (w_1, w_2,\ldots,w_n\in\mathbb{R})\]
 
 \begin{ex}
 2次元ベクトル $\bm{a} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}$ は、第1成分が3、第2成分が2であることを示します。
+また、2次元の行ベクトル $\bm{b} = (1 \ 5)$ は、第1成分が1、第2成分が5であることを示します。
 \end{ex}
 
 \begin{dfn}[ベクトルの等しさ] \label{vector_equality}
@@ -56,7 +58,7 @@ $\begin{pmatrix} 3 \\ 2 \end{pmatrix} + \begin{pmatrix} 1 \\ 4 \end{pmatrix} = \
 \end{enumerate}
 \begin{proof*}
 ここでは、\emph{交換法則}の証明を示します。その他の性質は、同様の方法で成分計算によって証明できます（一部は練習問題とします）。\par
-$\bm{a} = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$ と $\bm{b} = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}$ とする。定義\ref{vector_sum}より、$\bm{a} + \bm{b} = \begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix}$。実数の足し算は交換法則を満たす（$x+y = y+x$）ので、各成分について $a_i + b_i = b_i + a_i$ が成り立つ。よって、$\begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix} = \begin{pmatrix} b_1 + a_1 \\ \vdots \\ b_n + a_n \end{pmatrix}$。再び定義\ref{vector_sum}より、これは $\bm{b} + \bm{a}$ に等しい。したがって、$\bm{a} + \bm{b} = \bm{b} + \bm{a}$ が成り立つ。(証明終)
+$\bm{a} = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix},\ \bm{b} = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}$ とする。定義\ref{vector_sum}より、$\bm{a} + \bm{b} = \begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix}$。実数の足し算は交換法則を満たす（$x+y = y+x$）ので、各成分について $a_i + b_i = b_i + a_i$ が成り立つ。よって、$\begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix} = \begin{pmatrix} b_1 + a_1 \\ \vdots \\ b_n + a_n \end{pmatrix}$。再び定義\ref{vector_sum}より、これは $\bm{b} + \bm{a}$ に等しい。したがって、$\bm{a} + \bm{b} = \bm{b} + \bm{a}$ が成り立つ。(証明終)
 \end{proof*}
 \end{thm}
 
@@ -89,7 +91,7 @@ $2 \begin{pmatrix} 3 \\ 2 \end{pmatrix} = \begin{pmatrix} 2 \times 3 \\ 2 \times
 \end{enumerate}
 \begin{proof*}
 ここでは、\emph{分配法則（ベクトルについて）}の証明を示します。その他の性質は、同様の方法で成分計算によって証明できます（一部は練習問題とします）。\par
-$\bm{a} = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$ と $\bm{b} = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}$ とスカラー $k$ とする。定義\ref{vector_sum}より、$\bm{a} + \bm{b} = \begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix}$。次に、定義\ref{vector_scalar}より、$k(\bm{a} + \bm{b}) = k \begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix} = \begin{pmatrix} k(a_1 + b_1) \\ \vdots \\ k(a_n + b_n) \end{pmatrix}$。実数の掛け算は分配法則を満たす（$x(y+z) = xy+xz$）ので、各成分について $k(a_i + b_i) = k a_i + k b_i$ が成り立つ。よって、$\begin{pmatrix} k(a_1 + b_1) \\ \vdots \\ k(a_n + b_n) \end{pmatrix} = \begin{pmatrix} k a_1 + k b_1 \\ \vdots \\ k a_n + k b_n \end{pmatrix}$。この式は、ベクトルの和の定義（定義\ref{vector_sum}）により、$\begin{pmatrix} k a_1 \\ \vdots \\ k a_n \end{pmatrix} + \begin{pmatrix} k b_1 \\ \vdots \\ k b_n \end{pmatrix}$ と書ける。そして、定義\ref{vector_scalar}より、これは $k\bm{a} + k\bm{b}$ に等しい。したがって、$k(\bm{a}+\bm{b}) = k\bm{a} + k\bm{b}$ が成り立つ。(証明終)
+$\bm{a} = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix},\ \bm{b} = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix},\ k\in\mathbb{R}$ とする。定義\ref{vector_sum}より、$\bm{a} + \bm{b} = \begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix}$。次に、定義\ref{vector_scalar}より、$k(\bm{a} + \bm{b}) = k \begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix} = \begin{pmatrix} k(a_1 + b_1) \\ \vdots \\ k(a_n + b_n) \end{pmatrix}$。実数の掛け算は分配法則を満たす（$x(y+z) = xy+xz$）ので、各成分について $k(a_i + b_i) = k a_i + k b_i$ が成り立つ。よって、$\begin{pmatrix} k(a_1 + b_1) \\ \vdots \\ k(a_n + b_n) \end{pmatrix} = \begin{pmatrix} k a_1 + k b_1 \\ \vdots \\ k a_n + k b_n \end{pmatrix}$。この式は、ベクトルの和の定義（定義\ref{vector_sum}）により、$\begin{pmatrix} k a_1 \\ \vdots \\ k a_n \end{pmatrix} + \begin{pmatrix} k b_1 \\ \vdots \\ k b_n \end{pmatrix}$ と書ける。そして、定義\ref{vector_scalar}より、これは $k\bm{a} + k\bm{b}$ に等しい。したがって、$k(\bm{a}+\bm{b}) = k\bm{a} + k\bm{b}$ が成り立つ。(証明終)
 \end{proof*}
 \end{thm}
 
