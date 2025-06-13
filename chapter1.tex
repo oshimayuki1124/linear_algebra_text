@@ -8,13 +8,13 @@ $n$個の成分を持つベクトルを\emph{$n$次元ベクトル}といい、�
 \begin{ex}
 2次元ベクトル $\bm{a} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}$ は、第1成分が3、第2成分が2であることを示します。
 \end{ex}
-\begin{dfn}[ベクトルの等しさ]
+\begin{dfn}[ベクトルの等しさ] \label{vector_equality}
 2つのベクトル$\bm{a}=\begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$と$\bm{b}=\begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}$が等しいとは、それらの対応するすべての成分が等しいことをいいます。すなわち、$a_i=b_i$がすべての$i=1,\ldots,n$について成り立つとき、$\bm{a}=\bm{b}$と定義します。
 \end{dfn}
 \begin{ex}
 $\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 5 \\ -3 \end{pmatrix}$ならば、$x=5$ かつ $y=−3$ です。
 \end{ex}
-\begin{dfn}[零ベクトル]
+\begin{dfn}[零ベクトル] \label{vector_zero}
 すべての成分が $0$ のベクトルを\emph{零ベクトル}といい、$\bm{0}$ で表します。
 \end{dfn}
 \begin{ex}
@@ -27,7 +27,7 @@ $\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 5 \\ -3 \end{pmatrix}$�
 
 \subsection{ベクトルの演算の定義と性質}
 \subsubsection{ベクトルの和（足し算）}
-\begin{dfn}[ベクトルの和]
+\begin{dfn}[ベクトルの和] \label{vector_sum}
 同じ次元のベクトル$\bm{a}=\begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$と$\bm{b}=\begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}$の和$\bm{a}+\bm{b}$は、対応する成分同士を足し合わせることで定義されます。
 \[\bm{a} + \bm{b} = \begin{pmatrix} a_1 + b_1 \\ a_2 + b_2 \\ \vdots \\ a_n + b_n \end{pmatrix}\]
 \end{dfn}
@@ -37,7 +37,7 @@ $\begin{pmatrix} 3 \\ 2 \end{pmatrix} + \begin{pmatrix} 1 \\ 4 \end{pmatrix} = \
 
 \emph{幾何学的解釈}:ベクトルの和は、\emph{「移動の連続」}として考えることができます。一方のベクトルの終点に他方のベクトルの始点を置いたとき、最初の始点から最後の終点への矢印が和になります（\emph{三角形の法則}）。また、始点をそろえて平行四辺形を作ったときの対角線が和のベクトルになります（\emph{平行四辺形の法則}）。
 
-\begin{thm}[ベクトルの和の性質]
+\begin{thm}[ベクトルの和の性質] \label{vector_sum_property}
 ベクトルの和は、以下の性質を持ちます。
 \begin{enumerate}
 \item \emph{交換法則}: $\bm{a} + \bm{b} = \bm{b} + \bm{a}$
@@ -47,12 +47,12 @@ $\begin{pmatrix} 3 \\ 2 \end{pmatrix} + \begin{pmatrix} 1 \\ 4 \end{pmatrix} = \
 \end{enumerate}
 \begin{proof*}
 ここでは、\emph{交換法則}の証明を示します。その他の性質は、同様の方法で成分計算によって証明できます（一部は練習問題とします）。\par
-$\bm{a} = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$ と $\bm{b} = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}$ とする。定義 1.3 より、$\bm{a} + \bm{b} = \begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix}$。実数の足し算は交換法則を満たす（$x+y = y+x$）ので、各成分について $a_i + b_i = b_i + a_i$ が成り立つ。よって、$\begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix} = \begin{pmatrix} b_1 + a_1 \\ \vdots \\ b_n + a_n \end{pmatrix}$。再び定義 1.3 より、これは $\bm{b} + \bm{a}$ に等しい。したがって、$\bm{a} + \bm{b} = \bm{b} + \bm{a}$ が成り立つ。(証明終)
+$\bm{a} = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$ と $\bm{b} = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}$ とする。定義\ref{vector_sum}より、$\bm{a} + \bm{b} = \begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix}$。実数の足し算は交換法則を満たす（$x+y = y+x$）ので、各成分について $a_i + b_i = b_i + a_i$ が成り立つ。よって、$\begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix} = \begin{pmatrix} b_1 + a_1 \\ \vdots \\ b_n + a_n \end{pmatrix}$。再び定義\ref{vector_sum}より、これは $\bm{b} + \bm{a}$ に等しい。したがって、$\bm{a} + \bm{b} = \bm{b} + \bm{a}$ が成り立つ。(証明終)
 \end{proof*}
 \end{thm}
 
 \subsection{スカラー倍（定数倍）}
-\begin{dfn}[ベクトルのスカラー倍]
+\begin{dfn}[ベクトルのスカラー倍] \label{vector_scalar}
 ベクトル $\bm{a} = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$ と実数 $k$（\emph{スカラー}）の積 $k\bm{a}$ は、ベクトルの各成分に $k$ を掛けることで定義されます。
 \[k\bm{a} = \begin{pmatrix} k a_1 \\ k a_2 \\ \vdots \\ k a_n \end{pmatrix}\]
 \end{dfn}
@@ -67,7 +67,7 @@ $2 \begin{pmatrix} 3 \\ 2 \end{pmatrix} = \begin{pmatrix} 2 \times 3 \\ 2 \times
 \item $k = 0$ なら、すべての成分が $0$ になるため、\emph{零ベクトル}$\bm{0}$ になります。
 \end{itemize}
 
-\begin{thm}[スカラー倍の性質]
+\begin{thm}[スカラー倍の性質] \label{vector_scalar_property}
 スカラー倍は、以下の性質を持ちます。
 \begin{enumerate}
 \item \emph{結合法則}: $k(l\bm{a}) = (kl)\bm{a}$
@@ -78,8 +78,7 @@ $2 \begin{pmatrix} 3 \\ 2 \end{pmatrix} = \begin{pmatrix} 2 \times 3 \\ 2 \times
 \end{enumerate}
 \begin{proof*}
 ここでは、\emph{分配法則（ベクトルについて）}の証明を示します。その他の性質は、同様の方法で成分計算によって証明できます（一部は練習問題とします）。\par
-$\bm{a} = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$ と $\bm{b} = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}$ とスカラー $k$ とする。
-定義 1.3 より、$\bm{a} + \bm{b} = \begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix}$。次に、定義 1.4 より、$k(\bm{a} + \bm{b}) = k \begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix} = \begin{pmatrix} k(a_1 + b_1) \\ \vdots \\ k(a_n + b_n) \end{pmatrix}$。実数の掛け算は分配法則を満たす（$x(y+z) = xy+xz$）ので、各成分について $k(a_i + b_i) = k a_i + k b_i$ が成り立つ。よって、$\begin{pmatrix} k(a_1 + b_1) \\ \vdots \\ k(a_n + b_n) \end{pmatrix} = \begin{pmatrix} k a_1 + k b_1 \\ \vdots \\ k a_n + k b_n \end{pmatrix}$。この式は、ベクトルの和の定義（定義 1.3）により、$\begin{pmatrix} k a_1 \\ \vdots \\ k a_n \end{pmatrix} + \begin{pmatrix} k b_1 \\ \vdots \\ k b_n \end{pmatrix}$ と書ける。そして、定義 1.4 より、これは $k\bm{a} + k\bm{b}$ に等しい。したがって、$k(\bm{a}+\bm{b}) = k\bm{a} + k\bm{b}$ が成り立つ。(証明終)
+$\bm{a} = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$ と $\bm{b} = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}$ とスカラー $k$ とする。定義\ref{vector_sum}より、$\bm{a} + \bm{b} = \begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix}$。次に、定義\ref{vector_scalar}より、$k(\bm{a} + \bm{b}) = k \begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix} = \begin{pmatrix} k(a_1 + b_1) \\ \vdots \\ k(a_n + b_n) \end{pmatrix}$。実数の掛け算は分配法則を満たす（$x(y+z) = xy+xz$）ので、各成分について $k(a_i + b_i) = k a_i + k b_i$ が成り立つ。よって、$\begin{pmatrix} k(a_1 + b_1) \\ \vdots \\ k(a_n + b_n) \end{pmatrix} = \begin{pmatrix} k a_1 + k b_1 \\ \vdots \\ k a_n + k b_n \end{pmatrix}$。この式は、ベクトルの和の定義（定義\ref{vector_sum}）により、$\begin{pmatrix} k a_1 \\ \vdots \\ k a_n \end{pmatrix} + \begin{pmatrix} k b_1 \\ \vdots \\ k b_n \end{pmatrix}$ と書ける。そして、定義\ref{vector_scalar}より、これは $k\bm{a} + k\bm{b}$ に等しい。したがって、$k(\bm{a}+\bm{b}) = k\bm{a} + k\bm{b}$ が成り立つ。(証明終)
 \end{proof*}
 \end{thm}
 
@@ -108,10 +107,10 @@ $\begin{pmatrix} 3 \\ 2 \end{pmatrix} - \begin{pmatrix} 1 \\ 4 \end{pmatrix} = \
 \end{quiz}
 
 \begin{quiz}[定理の証明演習]
-定理 1.1 と 定理 1.2 の残りの性質を、成分計算を用いて各自で証明しなさい。
+定理\ref{vector_sum_property}と定理\ref{vector_scalar_property}の残りの性質を、成分計算を用いて各自で証明しなさい。
 特に、以下の証明に挑戦してみましょう。
 \begin{enumerate}
-\item \emph{定理 1.1 の2. 結合法則}: $(\bm{a} + \bm{b}) + \bm{c} = \bm{a} + (\bm{b} + \bm{c})$
-\item \emph{定理 1.2 の2. 分配法則（スカラーについて）}: $(k+l)\bm{a} = k\bm{a} + l\bm{a}$
+\item \emph{定理\ref{vector_sum_property}の2.結合法則}: $(\bm{a} + \bm{b}) + \bm{c} = \bm{a} + (\bm{b} + \bm{c})$
+\item \emph{定理\ref{vector_scalar_property}の2.分配法則（スカラーについて）}: $(k+l)\bm{a} = k\bm{a} + l\bm{a}$
 \end{enumerate}
 \end{quiz}
