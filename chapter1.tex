@@ -1,36 +1,45 @@
 \section{ベクトルとその演算}
+
 \subsection{ベクトルの定義}
 
-\emph{ベクトル}とは、いくつかの実数を順序付けて並べたものです。これらの数を\emph{成分}と呼びます。
-$n$個の成分を持つベクトルを\emph{$n$次元ベクトル}といい、縦に並べた\emph{列ベクトル}として表します。
-\[\bm{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix}\]
-ここで$v_1, v_2,\ldots,v_n$は実数です。
+\emph{ベクトル}とは、いくつかの実数を順序付けて並べたものです。これらの数を\emph{成分}と呼びます。$n$個の成分を持つベクトルを\emph{$n$次元ベクトル}といい、縦に並べた\emph{列ベクトル}として表します。
+\[\bm{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} \quad (v_1, v_2,\ldots,v_n\in\mathbb{R})\]
+
 \begin{ex}
 2次元ベクトル $\bm{a} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}$ は、第1成分が3、第2成分が2であることを示します。
 \end{ex}
+
 \begin{dfn}[ベクトルの等しさ] \label{vector_equality}
 2つのベクトル$\bm{a}=\begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$と$\bm{b}=\begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}$が等しいとは、それらの対応するすべての成分が等しいことをいいます。すなわち、$a_i=b_i$がすべての$i=1,\ldots,n$について成り立つとき、$\bm{a}=\bm{b}$と定義します。
 \end{dfn}
+
 \begin{ex}
 $\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 5 \\ -3 \end{pmatrix}$ならば、$x=5$ かつ $y=−3$ です。
 \end{ex}
+
 \begin{dfn}[零ベクトル] \label{vector_zero}
 すべての成分が $0$ のベクトルを\emph{零ベクトル}といい、$\bm{0}$ で表します。
 \end{dfn}
+
 \begin{ex}
 2次元の零ベクトルは$\bm{0} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$
 \end{ex}
+
 \emph{ベクトルの幾何学的解釈}:ベクトルは、その代数的な定義（成分の羅列）とは別に、\emph{空間内の点の位置や原点からその点へ向かう有向線分（矢印）}として直感的に理解することができます。\emph{この矢印の長さがベクトルの大きさを、矢印の方向がベクトルの向き}を表します。
+
 \begin{ex}
 ベクトル$\bm{a} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}$は、原点$(0,0)$から点$(3,2)$へ向かう矢印として図示できます。この図示によって、ベクトルの持つ「移動」や「方向」といった意味合いを視覚的に捉えることができます。
 \end{ex}
 
 \subsection{ベクトルの演算の定義と性質}
+
 \subsubsection{ベクトルの和（足し算）}
+
 \begin{dfn}[ベクトルの和] \label{vector_sum}
 同じ次元のベクトル$\bm{a}=\begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$と$\bm{b}=\begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}$の和$\bm{a}+\bm{b}$は、対応する成分同士を足し合わせることで定義されます。
 \[\bm{a} + \bm{b} = \begin{pmatrix} a_1 + b_1 \\ a_2 + b_2 \\ \vdots \\ a_n + b_n \end{pmatrix}\]
 \end{dfn}
+
 \begin{ex}
 $\begin{pmatrix} 3 \\ 2 \end{pmatrix} + \begin{pmatrix} 1 \\ 4 \end{pmatrix} = \begin{pmatrix} 3 + 1 \\ 2 + 4 \end{pmatrix} = \begin{pmatrix} 4 \\ 6 \end{pmatrix}$
 \end{ex}
@@ -52,10 +61,12 @@ $\bm{a} = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$ と $\bm{b} = \beg
 \end{thm}
 
 \subsection{スカラー倍（定数倍）}
+
 \begin{dfn}[ベクトルのスカラー倍] \label{vector_scalar}
 ベクトル $\bm{a} = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$ と実数 $k$（\emph{スカラー}）の積 $k\bm{a}$ は、ベクトルの各成分に $k$ を掛けることで定義されます。
 \[k\bm{a} = \begin{pmatrix} k a_1 \\ k a_2 \\ \vdots \\ k a_n \end{pmatrix}\]
 \end{dfn}
+
 \begin{ex}
 $2 \begin{pmatrix} 3 \\ 2 \end{pmatrix} = \begin{pmatrix} 2 \times 3 \\ 2 \times 2 \end{pmatrix} = \begin{pmatrix} 6 \\ 4 \end{pmatrix}$
 \end{ex}
@@ -83,10 +94,10 @@ $\bm{a} = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$ と $\bm{b} = \beg
 \end{thm}
 
 \subsection{ベクトルの差（引き算）}
-ベクトルの差 $\bm{a} - \bm{b}$ は、\emph{ベクトルの和}と\emph{スカラー倍（逆ベクトル）}を組み合わせて定義されます。
-すなわち、$\bm{a} - \bm{b} = \bm{a} + (-\bm{b})$ です。
-これを成分で書くと、
+
+ベクトルの差 $\bm{a} - \bm{b}$ は、\emph{ベクトルの和}と\emph{スカラー倍（逆ベクトル）}を組み合わせて定義されます。すなわち、$\bm{a} - \bm{b} = \bm{a} + (-\bm{b})$ です。これを成分で書くと、
 \[\bm{a} - \bm{b} = \begin{pmatrix} a_1 - b_1 \\ a_2 - b_2 \\ \vdots \\ a_n - b_n \end{pmatrix}\]
+
 \begin{ex}
 $\begin{pmatrix} 3 \\ 2 \end{pmatrix} - \begin{pmatrix} 1 \\ 4 \end{pmatrix} = \begin{pmatrix} 3 - 1 \\ 2 - 4 \end{pmatrix} = \begin{pmatrix} 2 \\ -2 \end{pmatrix}$
 \end{ex}
@@ -94,6 +105,7 @@ $\begin{pmatrix} 3 \\ 2 \end{pmatrix} - \begin{pmatrix} 1 \\ 4 \end{pmatrix} = \
 \emph{幾何学的解釈}:$\bm{a} - \bm{b}$ は、$\bm{b}$ の終点から $\bm{a}$ の終点へ向かうベクトルと解釈できます。（これは $\bm{b} + (\bm{a} - \bm{b}) = \bm{a}$ という関係から理解できます。）
 
 \subsection{練習問題}
+
 \begin{quiz}
 次のベクトルを計算しなさい。
 \begin{enumerate}

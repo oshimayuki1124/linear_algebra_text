@@ -1,0 +1,84 @@
+\section{応用問題と発展}
+
+この章では、これまでの章で学んだ線形代数の基礎概念をより深く理解し、応用力を養うための問題を提供します。標準的な練習問題よりも思考力を要するものや、いくつかの概念を組み合わせて解く必要がある問題、そして定理の証明に焦点を当てた問題が含まれます。
+
+\subsection{応用問題}
+
+\begin{quiz}
+3点 $\text{A}(1, 2, 3)$, $\text{B}(4, 5, 6)$, $\text{C}(7, 8, 9)$ が同一直線上にあることを、ベクトルの線形従属の概念を用いて証明しなさい。
+\end{quiz}
+
+\begin{quiz}
+ベクトル $\bm{u} = \begin{pmatrix} 1 \\ 2 \\ -1 \end{pmatrix}$ と $\bm{v} = \begin{pmatrix} 3 \\ -1 \\ 2 \end{pmatrix}$ の両方に直交する（垂直な）零ベクトルでないベクトル $\bm{w}$ を1つ求めなさい。
+\end{quiz}
+
+\begin{quiz}
+$2 \times 2$ 行列 $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ に対して、$\bm{A}^2 = \bm{O}$（零行列）となるような、零行列ではない行列の例を1つ挙げ、実際に計算して示しなさい。
+\end{quiz}
+
+\begin{quiz}
+$n$次元ベクトル空間 $\mathbb{R}^n$ の任意の基底が $n$ 個のベクトルからなることを、線形独立性と生成の概念を用いて簡潔に説明しなさい。
+\end{quiz}
+
+\begin{quiz}
+$\mathbb{R}^3$ において、3つのベクトル $\bm{v}_1 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}$, $\bm{v}_2 = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}$, $\bm{v}_3 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$ が基底をなすことを確認し、ベクトル $\bm{x} = \begin{pmatrix} 2 \\ 3 \\ 4 \end{pmatrix}$ をこの基底の線形結合で表しなさい。
+\end{quiz}
+
+\begin{quiz}
+線形写像 $T: \mathbb{R}^2 \to \mathbb{R}^2$ が、原点を中心に反時計回りに $\pi/4$回転させる変換であるとき、この写像の標準基底に関する表現行列を求めなさい。
+\end{quiz}
+
+\begin{quiz}
+行列 $\bm{A} = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$ と $\bm{B} = \begin{pmatrix} -1 & 0 \\ 2 & 1 \end{pmatrix}$ について、$(\bm{A}+\bm{B})(\bm{A}-\bm{B})$ と $\bm{A}^2 - \bm{B}^2$ をそれぞれ計算し、両者が等しくないことを示しなさい。この結果から、行列の積における注意点を述べなさい。
+\end{quiz}
+
+\begin{quiz}
+ベクトル空間 $V = \text{span}\left\{ \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix} \right\}$ の次元を求め、その基底を一つ見つけなさい。
+\end{quiz}
+
+\begin{quiz}
+線形写像 $f: \mathbb{R}^2 \to \mathbb{R}^3$ が $f\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x-y \\ 2x \\ x+y \end{pmatrix}$ で与えられるとき、この線形写像の標準基底に関する表現行列を求めなさい。
+\end{quiz}
+
+\begin{quiz}
+$2 \times 2$ 行列 $\bm{A} = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$ が、あるベクトル $\bm{x} \in \mathbb{R}^2$ を $f(\bm{x}) = \bm{A}\bm{x}$ という線形写像で変換するとします。この変換によって、$(0,0),(1,0),(1,1),(0,1)$を頂点とする正方形がどのような図形に変換されるか図示し、その新しい図形の面積を求めなさい。
+\end{quiz}
+
+\subsection{発展的な証明問題}
+
+\begin{quiz}
+\emph{線形結合の一意性}: ベクトル空間 $V$ の基底 $B = \{\bm{v}_1, \ldots, \bm{v}_n\}$ が与えられたとき、任意のベクトル $\bm{x} \in V$ は、基底の線形結合として一意に表せることを証明しなさい。すなわち、$c_1\bm{v}_1 + \dots + c_n\bm{v}_n = d_1\bm{v}_1 + \dots + d_n\bm{v}_n$ ならば、$c_i = d_i$ がすべての $i$ について成り立つことを示しなさい。
+\end{quiz}
+
+\begin{quiz}
+\emph{線形写像の零ベクトル変換の証明}: 線形写像 $f:V \to W$ が与えられたとき、$f(\bm{0}_V) = \bm{0}_W$ であることを、線形写像の加法性（定義 6.1-1）と斉次性（定義 6.1-2）の定義のみを用いて厳密に証明しなさい。
+\end{quiz}
+
+\begin{quiz}
+\emph{線形写像による線形結合の保存}: 線形写像 $f:V \to W$ と、任意のベクトル $\bm{v}_1, \ldots, \bm{v}_k \in V$ およびスカラー $c_1, \ldots, c_k$ に対して、$f(c_1\bm{v}_1 + \dots + c_k\bm{v}_k) = c_1 f(\bm{v}_1) + \dots + c_k f(\bm{v}_k)$ が成り立つことを、線形写像の定義（加法性と斉次性）を用いて証明しなさい。
+\end{quiz}
+
+\begin{quiz}
+\emph{ベクトル空間の部分集合が部分空間となる条件の証明}: ベクトル空間 $V$ の空でない部分集合 $W$ が、以下の1つの条件を満たすとき、$W$ は $V$ の部分空間であることを証明しなさい。
+（条件: 任意の $\bm{u}, \bm{v} \in W$ と任意のスカラー $c$ に対して、$c\bm{u} + \bm{v} \in W$）
+\end{quiz}
+
+\begin{quiz}
+\emph{次元と線形従属の関係}: $n$次元ベクトル空間 $V$ において、 $n$ 個より多いベクトルからなる任意の集合は必ず線形従属であることを証明しなさい。
+\end{quiz}
+
+\begin{quiz}
+\emph{生成集合と基底}: $n$次元ベクトル空間 $V$ を生成する $n$ 個のベクトルからなる集合が、自動的に線形独立であることを証明しなさい。
+\end{quiz}
+
+\begin{quiz}
+\emph{行列の結合法則の証明}: 行列の積の結合法則 $(\bm{A}\bm{B})\bm{C} = \bm{A}(\bm{B}\bm{C})$ を、各要素の計算を用いて厳密に証明しなさい。（ただし、積が定義されることを前提とする。）
+\end{quiz}
+
+\begin{quiz}
+\emph{内積の性質の証明}: 任意のベクトル $\bm{u}, \bm{v}, \bm{w} \in \mathbb{R}^n$ と任意のスカラー $c$ に対して、内積の以下の性質が成り立つことを証明しなさい。
+\begin{enumerate}
+    \item $\bm{u} \cdot (\bm{v} + \bm{w}) = \bm{u} \cdot \bm{v} + \bm{u} \cdot \bm{w}$
+    \item $(c\bm{u}) \cdot \bm{v} = c(\bm{u} \cdot \bm{v})$
+\end{enumerate}
+\end{quiz}
