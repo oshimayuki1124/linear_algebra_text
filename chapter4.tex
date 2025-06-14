@@ -59,7 +59,30 @@ $n$次元ベクトル $\bm{v}_1, \bm{v}_2, \ldots, \bm{v}_k$ と、スカラー 
 \emph{幾何学的解釈}:
 \begin{itemize}
 \item 1つの零ベクトルでないベクトル $\bm{v}_1$ の線形結合 $c_1 \bm{v}_1$ は、原点を通る直線を表します。
+\begin{center}
+\begin{tikzpicture}
+    \draw[->] (-2,0) -- (2,0) node[below] {$x$};
+    \draw[->] (0,-0.5) -- (0,2) node[left] {$y$};
+    \draw[very thick, red, ->] (0,0) -- (1.5,1) node[right] {$\bm{v}_1$};
+    \draw[blue] (-1,-1*1/1.5) -- (2.5,2.5*1/1.5); % 直線 (c_1 v_1)
+    \node at (0,0) [above left] {$O$};
+    \node at (0,1.5) [right] {$\text{span}\{\bm{v}_1\}$};
+\end{tikzpicture}
+\end{center}
 \item 2つの平行でない零ベクトルでないベクトル $\bm{v}_1, \bm{v}_2$ の線形結合 $c_1 \bm{v}_1 + c_2 \bm{v}_2$ は、原点を通る平面を表します。
+\begin{center}
+\begin{tikzpicture}
+    \fill[blue!10, opacity=0.5] (-2,-1) -- (2,-1) -- (2,1) -- (-2,1) -- cycle; % 平面を表現
+    \draw[dashed] (-2,-1) -- (2,-1);
+    \draw[dashed] (-2,1) -- (2,1);
+    \draw[dashed] (-2,-1) -- (-2,1);
+    \draw[dashed] (2,-1) -- (2,1);
+    \draw[->] (0,0) -- (1.5,0.5) node[right] {$\bm{v}_1$};
+    \draw[->] (0,0) -- (-0.5,1.5) node[above left] {$\bm{v}_2$};
+    \node at (0,0) [below left] {$O$};
+    \node at (1.5,1.5) [above right] {$\text{span}\{\bm{v}_1, \bm{v}_2\}$ (平面)};
+\end{tikzpicture}
+\end{center}
 \end{itemize}
 
 \begin{ex}

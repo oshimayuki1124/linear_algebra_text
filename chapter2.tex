@@ -6,7 +6,7 @@
 
 ベクトルの\emph{大きさ}は、そのベクトルの「長さ」を表す量です。数学的には\emph{ノルム}とも呼ばれ、ベクトル空間における距離の概念の基礎となります。
 
-\begin{dfn}[ベクトルの大きさ - ノルム]
+\begin{dfn}[ベクトルの大きさ - ノルム] \label{norm}
 $n$次元ベクトル $\bm{a} = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}$ の大きさ（ノルム）は、記号 $|\bm{a}|$ または $||\bm{a}||$ で表され、各成分の2乗の和の正の平方根として定義されます。
 \[|\bm{a}| = \sqrt{a_1^2 + a_2^2 + \dots + a_n^2}\]
 \end{dfn}
@@ -23,6 +23,18 @@ $n$次元ベクトル $\bm{a} = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end
 \end{itemize}
 \end{ex}
 
+\begin{thm}[ノルムの性質] \label{norm_property}
+任意の$n$次元ベクトル $\bm{a},\ \bm{b}$ と任意のスカラー $k$ に対して、ベクトルの大きさ（ノルム）は以下の性質を持ちます。
+\begin{enumerate}
+\item \emph{非負性}: $|\bm{a}| \ge 0$ であり、$|\bm{a}| = 0$ となるのは $\bm{a} = \bm{0}$ のときに限る。
+\item \emph{同次性}: $|k\bm{a}| = |k||\bm{a}|$
+\item \emph{三角不等式}: $|\bm{a} + \bm{b}| \le |\bm{a}| + |\bm{b}|$
+\end{enumerate}
+\begin{proof*}[アイデア]
+これらの性質は、定義\ref{norm}のノルムの定義式 $|\bm{a}| = \sqrt{a_1^2 + a_2^2 + \dots + a_n^2}$ と、実数の絶対値や不等式の性質を用いて成分ごとに計算することで証明できます。特に三角不等式の証明には、後述するコーシー＝シュワルツの不等式（定理\ref{Cauchy-Schwarz_inequality}）が用いられます。
+\end{proof*}
+\end{thm}
+
 \subsection{単位ベクトル}
 
 \begin{dfn}[単位ベクトル] \label{unit_vector}
@@ -33,7 +45,7 @@ $n$次元ベクトル $\bm{a} = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end
 零ベクトルでない任意のベクトル $\bm{a}$ に対して、$\bm{a}$ と同じ向きを持つ単位ベクトル $\bm{e}$ は、$\bm{a}$ をその大きさで割ることで得られます。この操作を\emph{正規化}と呼びます。
 \[\bm{e} = \frac{\bm{a}}{|\bm{a}|} = \frac{1}{|\bm{a}|} \bm{a}\]
 \begin{proof*}
-$|\bm{e}| = \left| \frac{1}{|\bm{a}|} \bm{a} \right|$であり，スカラー倍の性質（定理\ref{vector_scalar_property}の $|k\bm{v}| = |k||\bm{v}|$ に相当する性質）より、$|\bm{e}| = \left| \frac{1}{|\bm{a}|} \right| |\bm{a}|$。$|\bm{a}|$ は大きさであり常に正の値なので、$\left|\frac{1}{|\bm{a}|}\right| = \frac{1}{|\bm{a}|}$ です。よって、$|\bm{e}| = \frac{1}{|\bm{a}|} |\bm{a}| = 1$ となり、確かに単位ベクトルです。(証明終)
+$|\bm{e}| = \left| \frac{1}{|\bm{a}|} \bm{a} \right|$であり，同次性（定理\ref{norm_property}-2）より、$|\bm{e}| = \left| \frac{1}{|\bm{a}|} \right| |\bm{a}|$。$|\bm{a}|$ は大きさであり常に正の値なので、$\left|\frac{1}{|\bm{a}|}\right| = \frac{1}{|\bm{a}|}$ です。よって、$|\bm{e}| = \frac{1}{|\bm{a}|} |\bm{a}| = 1$ となり、確かに単位ベクトルです。(証明終)
 \end{proof*}
 \end{thm}
 
@@ -65,12 +77,39 @@ $n$次元ベクトル $\bm{a} = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end
 
 内積は、2つのベクトルのなす角と密接な関係があります。
 
+\begin{thm}[内積の性質] \label{inner_product_property}
+任意の$n$次元ベクトル $\bm{u}, \bm{v}, \bm{w} \in \mathbb{R}^n$ と任意のスカラー $c$ に対して、内積は以下の性質を持ちます。
+\begin{enumerate}
+\item \emph{交換法則}: $\bm{u} \cdot \bm{v} = \bm{v} \cdot \bm{u}$
+\item \emph{和に関する分配法則}: $\bm{u} \cdot (\bm{v} + \bm{w}) = \bm{u} \cdot \bm{v} + \bm{u} \cdot \bm{w}$
+\item \emph{スカラー倍に関する結合法則}: $(c\bm{u}) \cdot \bm{v} = c(\bm{u} \cdot \bm{v}) = \bm{u} \cdot (c\bm{v})$
+\item \emph{非負性}: $\bm{u} \cdot \bm{u} = |\bm{u}|^2 \ge 0$ であり、$\bm{u} \cdot \bm{u} = 0$ となるのは $\bm{u} = \bm{0}$ のときに限る。
+\end{enumerate}
+\begin{proof*}
+これらの性質は、定義\ref{inner_product}の内積の定義式と、実数の演算法則を用いて成分ごとに計算することで証明できます。ここでは、\emph{和に関する分配法則}の証明を示します。\par
+$\bm{u} = \begin{pmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{pmatrix},\ \bm{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix},\ \bm{w} = \begin{pmatrix} w_1 \\ w_2 \\ \vdots \\ w_n \end{pmatrix}$ とする。定義\ref{inner_product}および定義1.2のベクトルの和の定義より、
+\begin{align*}
+\bm{u} \cdot (\bm{v} + \bm{w}) &= \bm{u} \cdot \begin{pmatrix} v_1 + w_1 \\ v_2 + w_2 \\ \vdots \\ v_n + w_n \end{pmatrix} \\
+&= u_1(v_1 + w_1) + u_2(v_2 + w_2) + \dots + u_n(v_n + w_n) \\
+&= (u_1v_1 + u_1w_1) + (u_2v_2 + u_2w_2) + \dots + (u_nv_n + u_nw_n) \\
+&= (u_1v_1 + u_2v_2 + \dots + u_nv_n) + (u_1w_1 + u_2w_2 + \dots + u_nw_n) \\
+&= \bm{u} \cdot \bm{v} + \bm{u} \cdot \bm{w}
+\end{align*}
+したがって、$\bm{u} \cdot (\bm{v} + \bm{w}) = \bm{u} \cdot \bm{v} + \bm{u} \cdot \bm{w}$ が成り立つ。\par
+残りの性質についても同様に証明できます。\par
+\emph{交換法則}: $\bm{u} \cdot \bm{v} = \sum u_i v_i = \sum v_i u_i = \bm{v} \cdot \bm{u}$ となり、実数の積の交換法則から導かれる。\par
+\emph{スカラー倍に関する結合法則}: $(c\bm{u}) \cdot \bm{v} = \sum (cu_i)v_i = \sum c(u_iv_i) = c\sum u_iv_i = c(\bm{u} \cdot \bm{v})$ となり、実数の結合法則から導かれる。\par
+\emph{非負性}: $\bm{u} \cdot \bm{u} = \sum u_i^2$ は各成分の2乗の和なので常に0以上であり、これが0になるのは全ての$u_i$が0の場合に限る。\\
+（証明終）
+\end{proof*}
+\end{thm}
+
 \begin{thm}[コーシー＝シュワルツの不等式] \label{Cauchy-Schwarz_inequality}
 任意の$n$次元ベクトル $\bm{a}$ と $\bm{b}$ に対して、以下の不等式が成り立つ。
 \[(\bm{a} \cdot \bm{b})^2 \le |\bm{a}|^2 |\bm{b}|^2\]
 等号が成り立つのは、$\bm{a}$ と $\bm{b}$ が線形従属（一方が他方のスカラー倍で表せる、すなわち平行である）である場合に限る。
 \begin{proof*}
-実数 $t$ を用いてベクトル $\bm{v} = \bm{a} + t\bm{b}$ を考えます。ベクトルの大きさは常に非負なので、$|\bm{v}|^2 \ge 0$ です。
+実数 $t$ を用いてベクトル $\bm{v} = \bm{a} + t\bm{b}$ を考えます。ベクトルの大きさは常に非負なので、$|\bm{v}|^2 \ge 0$ です。内積の性質（定理\ref{inner_product_property}）を用いると、
 \begin{align*}
 |\bm{v}|^2 &= |\bm{a} + t\bm{b}|^2 = (\bm{a} + t\bm{b}) \cdot (\bm{a} + t\bm{b})\\
 &= \bm{a} \cdot \bm{a} + t(\bm{a} \cdot \bm{b}) + t(\bm{b} \cdot \bm{a}) + t^2(\bm{b} \cdot \bm{b})\\
@@ -120,6 +159,9 @@ D &= (2(\bm{a} \cdot \bm{b}))^2 - 4|\bm{b}|^2 |\bm{a}|^2\\
 (証明終)
 \end{proof*}
 \end{thm}
+
+\emph{幾何学的解釈}:\\
+この定理は、2つのベクトルが互いに「垂直」であることを、その内積がゼロであるという代数的な条件で完全に捉えられることを示しています。例えば、直交座標系における基本ベクトル（$x$軸、$y$軸、$z$軸方向の単位ベクトル）$\bm{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \bm{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \bm{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$ が互いに直交するのも、$\bm{e}_1 \cdot \bm{e}_2 = 0$ など、内積がゼロであることから確認できます。これは、線形代数が幾何学的な概念を代数的に表現する強力なツールであることを示しています。
 
 \begin{ex}
 $\bm{u} = \begin{pmatrix} 2 \\ -1 \end{pmatrix}$ と $\bm{v} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$ が直交するかを確認します。

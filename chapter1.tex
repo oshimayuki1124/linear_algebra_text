@@ -31,6 +31,16 @@ $\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 5 \\ -3 \end{pmatrix}$�
 
 \begin{ex}
 ベクトル$\bm{a} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}$は、原点$(0,0)$から点$(3,2)$へ向かう矢印として図示できます。この図示によって、ベクトルの持つ「移動」や「方向」といった意味合いを視覚的に捉えることができます。
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    \draw[->] (-0.5,0) -- (3.5,0) node[below] {$x$};
+    \draw[->] (0,-0.5) -- (0,2.5) node[left] {$y$};
+    \draw[thick, ->, blue] (0,0) -- (3,2) node[above right] {$\bm{a}=\begin{pmatrix} 3 \\ 2 \end{pmatrix}$};
+    \draw[dashed] (3,0) node[below] {$3$} -- (3,2);
+    \draw[dashed] (0,2) node[left] {$2$} -- (3,2);
+    \fill (0,0) circle (1.5pt) node[below left] {$O$};
+\end{tikzpicture}
+\end{center}
 \end{ex}
 
 \subsection{ベクトルの演算の定義と性質}
@@ -47,6 +57,24 @@ $\begin{pmatrix} 3 \\ 2 \end{pmatrix} + \begin{pmatrix} 1 \\ 4 \end{pmatrix} = \
 \end{ex}
 
 \emph{幾何学的解釈}: ベクトルの和は、\emph{「移動の連続」}として考えることができます。一方のベクトルの終点に他方のベクトルの始点を置いたとき、最初の始点から最後の終点への矢印が和になります（\emph{三角形の法則}）。また、始点をそろえて平行四辺形を作ったときの対角線が和のベクトルになります（\emph{平行四辺形の法則}）。
+\begin{center}
+\begin{tikzpicture}
+    % 三角形の法則
+    \draw[->] (0,0) -- (2,0.5) node[right] {$\bm{a}$};
+    \draw[->] (2,0.5) -- (3.5,2.5) node[right] {$\bm{b}$};
+    \draw[thick, ->, blue] (0,0) -- (3.5,2.5) node[above left] {$\bm{a}+\bm{b}$};
+    \node at (1.75,1.75) [above left=6pt] {三角形の法則};
+    % 平行四辺形の法則
+    \begin{scope}[shift={(5.5,0)}]
+    \draw[->] (0,0) -- (2,0.5) node[right] {$\bm{a}$};
+    \draw[->] (0,0) -- (1.5,2) node[left] {$\bm{b}$};
+    \draw[dashed] (2,0.5) -- (3.5,2.5);
+    \draw[dashed] (1.5,2) -- (3.5,2.5);
+    \draw[thick, ->, blue] (0,0) -- (3.5,2.5) node[above right] {$\bm{a}+\bm{b}$};
+    \node at (1.75,1.75) [above left=6pt] {平行四辺形の法則};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
 
 \begin{thm}[ベクトルの和の性質] \label{vector_sum_property}
 ベクトルの和は、以下の性質を持ちます。

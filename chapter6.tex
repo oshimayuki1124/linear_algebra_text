@@ -35,8 +35,27 @@
     \item \emph{斉次性}: $f(c\bm{u})$ と $c f(\bm{u})$ が等しいことを示します。
     \end{itemize}
     これは定義\ref{linear_map}の2つの条件を満たすので、回転写像は線形写像です。
-\item \emph{スカラー倍（拡大・縮小）}:
+\item \emph{スカラー倍（拡大・縮小）}:\\
     $f: \mathbb{R}^n \to \mathbb{R}^n$ を、$f(\bm{x}) = k\bm{x}$ （$k$は定数スカラー）と定義する写像は線形写像です。これは、ベクトルのスカラー倍の性質（定理\ref{vector_scalar_property}の2と3）から明らかです。
+\item \emph{射影（Projection）}:\\
+    $f: \mathbb{R}^3 \to \mathbb{R}^2$ を、$f\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} x \\ y \end{pmatrix}$ （$xy$平面への射影）と定義する写像を考えます。この写像が線形写像であることを確認してみましょう。
+    \begin{itemize}
+    \item \emph{加法性}: 任意の $\bm{u}=\begin{pmatrix} u_1 \\ u_2 \\ u_3 \end{pmatrix},\ \bm{v}=\begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix} \in \mathbb{R}^3$ に対して、
+    \begin{align*}
+    f(\bm{u}+\bm{v}) &= f\left(\begin{pmatrix} u_1+v_1 \\ u_2+v_2 \\ u_3+v_3 \end{pmatrix}\right) \\
+    &= \begin{pmatrix} u_1+v_1 \\ u_2+v_2 \end{pmatrix} \\
+    &= \begin{pmatrix} u_1 \\ u_2 \end{pmatrix} + \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \\
+    &= f(\bm{u}) + f(\bm{v})
+    \end{align*}
+    \item \emph{斉次性}: 任意の $\bm{u}=\begin{pmatrix} u_1 \\ u_2 \\ u_3 \end{pmatrix} \in \mathbb{R}^3$ と任意のスカラー $c$ に対して、
+    \begin{align*}
+    f(c\bm{u}) &= f\left(\begin{pmatrix} cu_1 \\ cu_2 \\ cu_3 \end{pmatrix}\right) \\
+    &= \begin{pmatrix} cu_1 \\ cu_2 \end{pmatrix} \\
+    &= c\begin{pmatrix} u_1 \\ u_2 \end{pmatrix} \\
+    &= cf(\bm{u})
+    \end{align*}
+    \end{itemize}
+    したがって、射影写像は線形写像です。
 \end{enumerate}
 \end{ex}
 
@@ -48,8 +67,19 @@
 \item 線形結合を線形結合に写す: $f(c_1\bm{v}_1 + \dots + c_k\bm{v}_k) = c_1 f(\bm{v}_1) + \dots + c_k f(\bm{v}_k)$
 \end{enumerate}
 \begin{proof*}
-ここでは、零ベクトルを零ベクトルに写すことの証明を示します。2. の証明は、線形写像の定義を繰り返し適用することで証明できます（練習問題とします）。\par
-$V$ の任意のベクトル $\bm{v}$ を考える。$V$ における零ベクトルの性質（定理\ref{vector_sum_property}-3）より、$\bm{v} + \bm{0}_V = \bm{v}$ である。この両辺に $f$ を作用させると、$f(\bm{v} + \bm{0}_V) = f(\bm{v})$ となる。線形写像の加法性（定義\ref{linear_map}-1）より、$f(\bm{v} + \bm{0}_V) = f(\bm{v}) + f(\bm{0}_V)$ となる。したがって、$f(\bm{v}) + f(\bm{0}_V) = f(\bm{v})$ が成り立つ。$W$ における零ベクトルの性質（定理\ref{vector_sum_property}-3）により、$f(\bm{0}_V)$ は $W$ の零ベクトルである $\bm{0}_W$ でなければならない。よって、$f(\bm{0}_V) = \bm{0}_W$ が成り立つ。(証明終)
+$V$ の任意のベクトル $\bm{v}$ を考える。$V$ における零ベクトルの性質（定理\ref{vector_sum_property}-3）より、$\bm{v} + \bm{0}_V = \bm{v}$ である。この両辺に $f$ を作用させると、$f(\bm{v} + \bm{0}_V) = f(\bm{v})$ となる。線形写像の加法性（定義\ref{linear_map}-1）より、$f(\bm{v} + \bm{0}_V) = f(\bm{v}) + f(\bm{0}_V)$ となる。したがって、$f(\bm{v}) + f(\bm{0}_V) = f(\bm{v})$ が成り立つ。$W$ における零ベクトルの性質（定理\ref{vector_sum_property}-3）により、$f(\bm{0}_V)$ は $W$ の零ベクトルである $\bm{0}_W$ でなければならない。よって、$f(\bm{0}_V) = \bm{0}_W$ が成り立つ。\par
+次に、\emph{線形結合を線形結合に写すことの証明}を示します。定義\ref{linear_map}の2つの条件（加法性と斉次性）を用いて、数学的帰納法により証明します。\par
+\emph{$k=1$ の場合}: $f(c_1\bm{v}_1) = c_1 f(\bm{v}_1)$ は線形写像の斉次性（定義\ref{linear_map}-2）そのものです。\par
+\emph{$k$ の場合を仮定し、$k+1$ の場合を示す}: $k$ 個のベクトルについて $f(c_1\bm{v}_1 + \dots + c_k\bm{v}_k) = c_1 f(\bm{v}_1) + \dots + c_k f(\bm{v}_k)$ が成り立つと仮定します。このとき、$k+1$ 個のベクトルについて、
+\begin{align*}
+&f(c_1\bm{v}_1 + \dots + c_k\bm{v}_k + c_{k+1}\bm{v}_{k+1}) \\
+=& f((c_1\bm{v}_1 + \dots + c_k\bm{v}_k) + c_{k+1}\bm{v}_{k+1}) \quad \text{（ベクトル和の結合法則）} \\
+=& f(c_1\bm{v}_1 + \dots + c_k\bm{v}_k) + f(c_{k+1}\bm{v}_{k+1}) \quad \text{（線形写像の加法性）} \\
+=& (c_1 f(\bm{v}_1) + \dots + c_k f(\bm{v}_k)) + c_{k+1} f(\bm{v}_{k+1}) \quad \text{（帰納法の仮定と線形写像の斉次性）} \\
+=& c_1 f(\bm{v}_1) + \dots + c_k f(\bm{v}_k) + c_{k+1} f(\bm{v}_{k+1}) \quad \text{（ベクトル和の結合法則）}
+\end{align*}
+したがって、すべての $k$ について線形結合を線形結合に写す性質が成り立ちます。
+(証明終)
 \end{proof*}
 \end{thm}
 
@@ -109,6 +139,10 @@ $\cos(\pi/2) = 0$, $\sin(\pi/2) = 1$ なので、
 \[\bm{A} = \begin{pmatrix} \cos(\pi/2) & -\sin(\pi/2) \\ \sin(\pi/2) & \cos(\pi/2) \end{pmatrix} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\]
 となります。
 \end{ex}
+
+\begin{rmk*}
+線形写像の表現行列は、選択する基底に依存します。もし、別の基底 $B'_V$ と $B'_W$ を選んだ場合、同じ線形写像 $f$ であっても表現行列は異なるものになります。これらの異なる表現行列は、基底の変換行列（第5章で軽く触れた概念）によって関連付けられます。具体的には、ある表現行列 $\bm{A}$ から別の表現行列 $\bm{A}'$ への変換は、$\bm{A}' = P^{-1}\bm{A}Q$ のような形で記述されることが多く（$P,\ Q$ は適切な基底の変換行列）、特に $V=W$ で基底を同じものにする場合は $\bm{A}' = P^{-1}\bm{A}P$ となります。この関係は、行列の「相似」という概念につながり、固有値・固有ベクトルを学ぶ上で重要になります。
+\end{rmk*}
 
 \subsection{練習問題}
 
