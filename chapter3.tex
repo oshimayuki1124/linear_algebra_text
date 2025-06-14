@@ -114,7 +114,7 @@ $\begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix} - \begin{pmatrix} 1 & 2 \\ 3 & 4 \
 行列の積は、これまでの和やスカラー倍とは異なり、少し複雑な定義を持ちます。しかし、その定義には深い意味があり、線形変換の合成などを自然に表現できます。
 
 \begin{dfn}[行列の積] \label{matrix_product}
-$m \times l$ 行列 $\bm{A} = (a_{ij})$ と $l \times n$ 行列 $\bm{B} = (b_{jk})$ の積 $\bm{C} = \bm{A}\bm{B}$ は、$m \times n$ 行列として定義されます。積の行列 $\bm{C}$ の $(i,k)$ 要素 $c_{ik}$ は、$\bm{A}$ の $i$ 行目の要素と $\bm{B}$ の $k$ 列目の要素をそれぞれ掛け合わせて足し合わせたものです。
+$m \times l$ 行列 $\bm{A} = (a_{ij})$ と $l \times n$ 行列 $\bm{B} = (b_{jk})$ の積 $\bm{C} = \bm{A}\bm{B}$ は、$m \times n$ 行列として定義されます。積の行列 $\bm{C}$ の $(i,k)$ 要素 $c_{ik}$ は、$\bm{A}$ の $i$ 行目のベクトルと $\bm{B}$ の $k$ 列目のベクトルとの内積として定義されます。
 \[c_{ik} = \sum_{j=1}^{l} a_{ij} b_{jk} = a_{i1}b_{1k} + a_{i2}b_{2k} + \dots + a_{il}b_{lk}\]
 \end{dfn}
 
@@ -156,7 +156,7 @@ $\bm{A}$ を $m \times l$ 行列、$\bm{B}$ と $\bm{C}$ を $l \times n$ 行列
 \end{thm}
 
 \begin{rmk*}
-行列の積は、一般に\emph{交換法則が成り立ちません}。つまり、$\bm{A}\bm{B} \neq \bm{B}\bm{A}$ であることがほとんどです。
+行列の積は、一般に\emph{交換法則が成り立ちません}。つまり、$\bm{A}\bm{B} \neq \bm{B}\bm{A}$ であるのが一般的です。
 \end{rmk*}
 
 \begin{ex}[交換法則が成り立たない例]
