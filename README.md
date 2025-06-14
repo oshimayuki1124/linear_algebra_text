@@ -12,7 +12,7 @@ This text is created by oshimayuki1124 and gemini-Pro.
 - chapter8: draft
 
 ## gemini rule
-- gemini must not read PDF file. you have to read Tex file.
+- you have to read Tex file.
 - When you are said to improve this text, you are expected to fix the following:
   - Is there anything unnatural in the text?
   - Are there consistent expressions and descriptions throughout the text?
