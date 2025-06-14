@@ -1,9 +1,12 @@
-\section{基底と次元}
+\section{基底と次元} \setcounter{ex}{0}
+
 この章では、ベクトル空間の構造を理解するための核心的な概念である\emph{基底}と\emph{次元}について学びます。基底は、ベクトル空間内の全てのベクトルを表現するための「最小限の構成要素」であり、次元はその空間の「大きさ」を示します。
 
 \subsection{基底（Basis）}
+
 これまでに、いくつかのベクトルを線形結合することで、様々なベクトルを表現できることを学びました。基底は、この「表現」を最も効率的に行うための特別なベクトルの集まりです。
-\begin{dfn}[基底]
+
+\begin{dfn}[基底] \label{basis}
 ベクトル空間 $V$ のベクトルの集まり $B = \{\bm{v}_1, \bm{v}_2, \ldots, \bm{v}_n\}$ が\emph{基底である}とは、以下の2つの条件を満たすときに言います。
 \begin{enumerate}
 \item $B$ が\emph{線形独立である}。
@@ -19,38 +22,57 @@
 
 簡単に言えば、基底とは「\emph{最小限の数のベクトルで、その空間のあらゆるベクトルを表せる集まり}」です。
 
-\begin{dfn}[標準基底]
+\begin{dfn}[標準基底] \label{standard_basis}
 $n$次元ユークリッド空間 $\mathbb{R}^n$ において、各成分の一つだけが1で他が全て0であるベクトルからなる基底を\emph{標準基底}と呼びます。
 \end{dfn}
 
 \begin{ex}
 \begin{itemize}
-\item \emph{2次元空間 $\mathbb{R}^2$ の標準基底}:$\bm{e}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix},\ \bm{e}_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$\\
+\item \emph{2次元空間 $\mathbb{R}^2$ の標準基底}: $\bm{e}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix},\ \bm{e}_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$\\
 	この集まり $B = \{\bm{e}_1, \bm{e}_2\}$ は $\mathbb{R}^2$ の基底です。
 	\begin{itemize}
 	\item \emph{線形独立性}: $c_1 \bm{e}_1 + c_2 \bm{e}_2 = \bm{0}$ ならば $c_1=0,\ c_2=0$ の場合に限られるため、線形独立です。
     \item \emph{生成性}: 任意の2次元ベクトル $\bm{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$ は $x_1 \bm{e}_1 + x_2 \bm{e}_2$ と書けるため、$\mathbb{R}^2$ を生成します。
     \end{itemize}
-\item \emph{別の基底の例($\mathbb{R}^2$)}:$\bm{v}_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix},\ \bm{v}_2 = \begin{pmatrix} -1 \\ 1 \end{pmatrix}$\\
+\item \emph{$\mathbb{R}^2$の別の基底の例}: $\bm{v}_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix},\ \bm{v}_2 = \begin{pmatrix} -1 \\ 1 \end{pmatrix}$\\
     この集まり $B' = \{\bm{v}_1, \bm{v}_2\}$ も $\mathbb{R}^2$ の基底です。
 	\begin{itemize}
     \item \emph{線形独立性}: $c_1 \bm{v}_1 + c_2 \bm{v}_2 = \bm{0}$ を解くと $c_1=0,\ c_2=0$ しか解がないため、線形独立です。
-    \item \emph{生成性}: 任意の $\bm{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$ に対して $c_1 \bm{v}_1 + c_2 \bm{v}_2 = \bm{x}$ を満たす $c_1, c_2$ が一意に存在するため、生成します。
+    \item \emph{生成性}: 任意の $\bm{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$ に対して $c_1 \bm{v}_1 + c_2 \bm{v}_2 = \bm{x}$ を満たす $c_1,\ c_2$ が一意に存在するため、生成します。
     \end{itemize}
 \end{itemize}
 \end{ex}
 
-\begin{thm}[基底の存在と一意性]
+\begin{thm}[基底の存在と一意性] \label{existence_and_uniqueness_of_basis}
 任意の有限次元ベクトル空間には基底が存在します。また、あるベクトル空間の基底を構成するベクトルの個数は、どの基底を選んだとしても常に同じです。
 \begin{proof*}[アイデア（個数の一意性）]
-この定理の「基底を構成するベクトルの個数は常に同じ」という部分が、次に定義する「次元」の概念を可能にします。その証明のアイデアは、以下に基づきます。
 もし、あるベクトル空間に、異なる個数のベクトルを持つ2つの基底 $B_1 = \{\bm{u}_1, \ldots, \bm{u}_m\}$ と $B_2 = \{\bm{v}_1, \ldots, \bm{v}_n\}$ が存在すると仮定します。このとき、$m \neq n$ だとすると、例えば $m < n$ の場合、基底 $B_1$ のベクトルを使って基底 $B_2$ のベクトルを全て線形結合で表そうとすると、ある段階で線形従属な関係が生じてしまい、矛盾が生じることを示します。これにより、$m=n$ でなければならない、と結論づけます。
 \end{proof*}
 \end{thm}
 
+\begin{dfn}[座標ベクトル]
+ベクトル空間 $V$ の基底を $B = \{\bm{v}_1, \bm{v}_2, \ldots, \bm{v}_n\}$ とする。任意のベクトル $\bm{x} \in V$ は、基底の線形結合として一意に表せる（定理\ref{existence_and_uniqueness_of_basis}参照）。すなわち、
+\[ \bm{x} = c_1 \bm{v}_1 + c_2 \bm{v}_2 + \dots + c_n \bm{v}_n \]
+このときの係数 $c_1, c_2, \ldots, c_n$ を順に並べた列ベクトル $\begin{pmatrix} c_1 \\ c_2 \\ \vdots \\ c_n \end{pmatrix}$ を、基底 $B$ に関するベクトル $\bm{x}$ の\emph{座標ベクトル}と呼び、$[\bm{x}]_B$ と表記する。
+\end{dfn}
+
+\begin{ex}[座標ベクトルの例]
+2次元空間 $\mathbb{R}^2$ の標準基底 $B = \{\bm{e}_1, \bm{e}_2\} = \left\{ \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right\}$ を考える。ベクトル $\bm{x} = \begin{pmatrix} 3 \\ -2 \end{pmatrix}$ は、
+\[ \bm{x} = 3 \begin{pmatrix} 1 \\ 0 \end{pmatrix} + (-2) \begin{pmatrix} 0 \\ 1 \end{pmatrix} = 3\bm{e}_1 - 2\bm{e}_2 \]
+と表せる。したがって、基底 $B$ に関するベクトル $\bm{x}$ の座標ベクトルは
+\[ [\bm{x}]_B = \begin{pmatrix} 3 \\ -2 \end{pmatrix} \]
+である。次に、$\mathbb{R}^2$ の別の基底 $B' = \{\bm{v}_1, \bm{v}_2\} = \left\{ \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 1 \end{pmatrix} \right\}$ を考える。同じベクトル $\bm{x} = \begin{pmatrix} 3 \\ -2 \end{pmatrix}$ をこの基底 $B'$ の線形結合で表すことを考える。
+\[ \begin{pmatrix} 3 \\ -2 \end{pmatrix} = c_1 \begin{pmatrix} 1 \\ 1 \end{pmatrix} + c_2 \begin{pmatrix} -1 \\ 1 \end{pmatrix} \]
+これを成分ごとに書くと、$3 = c_1 - c_2,\ -2 = c_1 + c_2$。これらの連立方程式を解くと、$c_1 = \frac{1}{2}$, $c_2 = -\frac{5}{2}$ となる。したがって、基底 $B'$ に関するベクトル $\bm{x}$ の座標ベクトルは
+\[ [\bm{x}]_{B'} = \begin{pmatrix} \frac{1}{2} \\ -\frac{5}{2} \end{pmatrix} \]
+である。この例から、座標ベクトルが選択された基底に依存することがわかる。
+\end{ex}
+
 \subsection{次元（Dimension）}
-基底を構成するベクトルの個数が常に同じであるという定理 5.1 の性質は、ベクトル空間の「大きさ」を定量的に表すことを可能にします。
-\begin{dfn}[次元]
+
+基底を構成するベクトルの個数が常に同じであるという定理\ref{existence_and_uniqueness_of_basis}の性質は、ベクトル空間の「大きさ」を定量的に表すことを可能にします。
+
+\begin{dfn}[次元] \label{dimension}
 ベクトル空間 $V$ の\emph{次元 (dimension)} は、その基底を構成するベクトルの個数として定義されます。$V$ の次元は $\dim(V)$ と表記されます。
 \end{dfn}
 
@@ -64,8 +86,10 @@ $n$次元ユークリッド空間 $\mathbb{R}^n$ において、各成分の一�
 \end{ex}
 
 \subsection{基底と次元に関する重要な定理}
+
 基底と次元の概念は、ベクトル空間内のベクトルの数や線形独立性・生成性と密接に関わっています。
-\begin{thm}
+
+\begin{thm} \label{basis_and_dimension}
 $n$次元ベクトル空間 $V$ において、以下のことが言えます。
 \begin{enumerate}
 \item $n$個のベクトルからなる線形独立な集まりは、必ず $V$ の基底である。
@@ -73,18 +97,28 @@ $n$次元ベクトル空間 $V$ において、以下のことが言えます。
 \item $V$ 内の $n$個より多いベクトルは、必ず線形従属である。
 \item $V$ 内の $n$個より少ないベクトルは、決して $V$ を生成しない。
 \end{enumerate}
-\begin{proof*}[アイデア(定理 5.2 の3.と4.)]
+\begin{proof*}[アイデア(3.と4.)]
 これらの定理は、基底の持つ性質（線形独立性と生成性、そして個数の一意性）から論理的に導かれます。例えば、3.「$n$個より多いベクトルは必ず線形従属」は、もしそれらが線形独立であると仮定すると、次元が $n$ であることと矛盾することを示すことで証明できます。
 \end{proof*}
 \end{thm}
 
 \subsection{練習問題}
+
 \begin{quiz}
 次のベクトルの集まりが、与えられたベクトル空間の基底であるかどうかを判定しなさい。
 \begin{enumerate}
 \item 空間 $\mathbb{R}^2$に対して、$\left\{ \begin{pmatrix} 1 \\ 2 \end{pmatrix}, \begin{pmatrix} 3 \\ 4 \end{pmatrix} \right\}$
 \item 空間 $\mathbb{R}^3$に対して、$\left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \right\}$
 \item 空間 $\mathbb{R}^3$に対して、$\left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \right\}$
+\end{enumerate}
+\end{quiz}
+
+\begin{quiz}
+次の問いに答えなさい。
+\begin{enumerate}
+\item ベクトル空間 $\mathbb{R}^2$ の基底を $B = \left\{ \begin{pmatrix} 1 \\ 2 \end{pmatrix}, \begin{pmatrix} 3 \\ 1 \end{pmatrix} \right\}$ とする。ベクトル $\bm{x} = \begin{pmatrix} 5 \\ 5 \end{pmatrix}$ の基底 $B$ に関する座標ベクトル $[\bm{x}]_B$ を求めなさい。
+\item ベクトル空間 $\mathbb{R}^3$ の標準基底を $E = \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}$ とする。ベクトル $\bm{y} = \begin{pmatrix} -1 \\ 4 \\ 2 \end{pmatrix}$ の基底 $E$ に関する座標ベクトル $[\bm{y}]_E$ を求めなさい。
+\item ベクトル空間 $\mathbb{R}^3$ の基底を $B' = \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \right\}$ とする。ベクトル $\bm{z} = \begin{pmatrix} 3 \\ 2 \\ 1 \end{pmatrix}$ の基底 $B'$ に関する座標ベクトル $[\bm{z}]_{B'}$ を求めなさい。
 \end{enumerate}
 \end{quiz}
 

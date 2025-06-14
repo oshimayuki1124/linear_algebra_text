@@ -1,12 +1,12 @@
-\section{線形写像と表現行列}
+\section{線形写像と表現行列} \setcounter{ex}{0}
 
-この章では、ベクトル空間間の「変換」である\emph{線形写像}と、その変換を具体的な数値で表す\emph{表現行列}について学びます。これは、行列が単なる数の集まりではなく、空間を動かす「働き」を持つことを理解する上で非常に重要です。
+この章では、ベクトル空間の間の「変換」である\emph{線形写像}と、その変換を具体的な数値で表す\emph{表現行列}について学びます。これは、行列が単なる数の集まりではなく、空間を動かす「働き」を持つことを理解する上で非常に重要です。
 
 \subsection{線形写像の定義}
 
 線形写像は、ベクトル空間の構造（和とスカラー倍）を保つ特別な種類の関数です。
 
-\begin{dfn}[線形写像]
+\begin{dfn}[線形写像] \label{linear_map}
 2つのベクトル空間 $V$ と $W$ が与えられたとき、写像（関数）$f: V \to W$ が\emph{線形写像 (linear map)} であるとは、以下の2つの条件を満たすときに言います。
 \begin{enumerate}
 \item \emph{加法性}: 任意の $\bm{u}, \bm{v} \in V$ に対して、$f(\bm{u} + \bm{v}) = f(\bm{u}) + f(\bm{v})$
@@ -16,7 +16,7 @@
 \[\text{任意の $\bm{u}, \bm{v} \in V$ と任意のスカラー $c_1, c_2$ に対して}f(c_1\bm{u} + c_2\bm{v}) = c_1 f(\bm{u}) + c_2 f(\bm{v})\]
 \end{dfn}
 
-\emph{幾何学的解釈}:
+\emph{幾何学的解釈}:\\
 線形写像は、空間を「まっすぐ」かつ「原点を原点に写す」変換だと考えることができます。具体的には、
 \begin{itemize}
 \item 直線を直線に写します。
@@ -29,46 +29,36 @@
 \begin{ex}
 \begin{enumerate}
 \item \emph{2次元の回転}:\\
-    $f: \mathbb{R}^2 \to \mathbb{R}^2$ を、ベクトルを角度 $\theta$ だけ反時計回りに回転させる写像とします。
-    $\bm{x} = \begin{pmatrix} x \\ y \end{pmatrix}$ としたとき、$f(\bm{x}) = \begin{pmatrix} x\cos\theta - y\sin\theta \\ x\sin\theta + y\cos\theta \end{pmatrix}$ と表されます。
-    この写像が線形写像であることを確認してみましょう。
+    $f: \mathbb{R}^2 \to \mathbb{R}^2$ を、ベクトルを角度 $\theta$ だけ反時計回りに回転させる写像とします。$\bm{x} = \begin{pmatrix} x \\ y \end{pmatrix}$ としたとき、$f(\bm{x}) = \begin{pmatrix} x\cos\theta - y\sin\theta \\ x\sin\theta + y\cos\theta \end{pmatrix}$ と表されます。この写像が線形写像であることを確認してみましょう。
 	\begin{itemize}
 	\item \emph{加法性}: $f(\bm{u} + \bm{v})$ と $f(\bm{u}) + f(\bm{v})$ が等しいことを示します。
     \item \emph{斉次性}: $f(c\bm{u})$ と $c f(\bm{u})$ が等しいことを示します。
     \end{itemize}
-    これは定義 6.1 の2つの条件を満たすので、回転写像は線形写像です。
+    これは定義\ref{linear_map}の2つの条件を満たすので、回転写像は線形写像です。
 \item \emph{スカラー倍（拡大・縮小）}:
-    $f: \mathbb{R}^n \to \mathbb{R}^n$ を、$f(\bm{x}) = k\bm{x}$ （$k$は定数スカラー）と定義する写像は線形写像です。
-    これは、ベクトルのスカラー倍の性質（定理1.2の2と1.2の3）から明らかです。
+    $f: \mathbb{R}^n \to \mathbb{R}^n$ を、$f(\bm{x}) = k\bm{x}$ （$k$は定数スカラー）と定義する写像は線形写像です。これは、ベクトルのスカラー倍の性質（定理\ref{vector_scalar_property}の2と3）から明らかです。
 \end{enumerate}
 \end{ex}
 
-\begin{thm}[線形写像の性質]
+\begin{thm}[線形写像の性質] \label{linear_map_property}
 線形写像 $f: V \to W$ は、以下の性質を持ちます。
 \begin{enumerate}
-\item 零ベクトルを零ベクトルに写す: $f(\bm{0}_V) = \bm{0}_W$
+\item 零ベクトルを零ベクトルに写す: $f(\bm{0}_V) = \bm{0}_W$\\
     （ここで $\bm{0}_V$ はベクトル空間 $V$ の零ベクトル、$\bm{0}_W$ は $W$ の零ベクトル）
 \item 線形結合を線形結合に写す: $f(c_1\bm{v}_1 + \dots + c_k\bm{v}_k) = c_1 f(\bm{v}_1) + \dots + c_k f(\bm{v}_k)$
 \end{enumerate}
 \begin{proof*}
 ここでは、零ベクトルを零ベクトルに写すことの証明を示します。2. の証明は、線形写像の定義を繰り返し適用することで証明できます（練習問題とします）。\par
-$V$ の任意のベクトル $\bm{v}$ を考える。
-$V$ における零ベクトルの性質（定理 1.1-3）より、$\bm{v} + \bm{0}_V = \bm{v}$ である。
-この両辺に $f$ を作用させると、$f(\bm{v} + \bm{0}_V) = f(\bm{v})$ となる。
-線形写像の加法性（定義 6.1-1）より、$f(\bm{v} + \bm{0}_V) = f(\bm{v}) + f(\bm{0}_V)$ となる。
-したがって、$f(\bm{v}) + f(\bm{0}_V) = f(\bm{v})$ が成り立つ。
-$W$ における零ベクトルの性質（定理 1.1-3）により、$f(\bm{0}_V)$ は $W$ の零ベクトルである $\bm{0}_W$ でなければならない。
-よって、$f(\bm{0}_V) = \bm{0}_W$ が成り立つ。
-(証明終)
+$V$ の任意のベクトル $\bm{v}$ を考える。$V$ における零ベクトルの性質（定理\ref{vector_sum_property}-3）より、$\bm{v} + \bm{0}_V = \bm{v}$ である。この両辺に $f$ を作用させると、$f(\bm{v} + \bm{0}_V) = f(\bm{v})$ となる。線形写像の加法性（定義\ref{linear_map}-1）より、$f(\bm{v} + \bm{0}_V) = f(\bm{v}) + f(\bm{0}_V)$ となる。したがって、$f(\bm{v}) + f(\bm{0}_V) = f(\bm{v})$ が成り立つ。$W$ における零ベクトルの性質（定理\ref{vector_sum_property}-3）により、$f(\bm{0}_V)$ は $W$ の零ベクトルである $\bm{0}_W$ でなければならない。よって、$f(\bm{0}_V) = \bm{0}_W$ が成り立つ。(証明終)
 \end{proof*}
 \end{thm}
 
 \subsection{表現行列}
+
 線形写像の素晴らしい点の1つは、それを\emph{行列}を使って表現できることです。これにより、抽象的な写像の操作を、具体的な行列計算に落とし込むことができます。
 
-\begin{dfn}[表現行列]
-$n$次元ベクトル空間 $V$ の基底を $B_V = \{\bm{v}_1, \bm{v}_2, \ldots, \bm{v}_n\}$ とし、$m$次元ベクトル空間 $W$ の基底を $B_W = \{\bm{w}_1, \bm{w}_2, \ldots, \bm{w}_m\}$ とする。
-線形写像 $f: V \to W$ の\emph{表現行列 (representation matrix)} $\bm{A}$ とは、各基底ベクトル $f(\bm{v}_j)$ の $W$ の基底 $B_W$ による線形結合の係数を列ベクトルとして並べた $m \times n$ 行列のことです。
+\begin{dfn}[表現行列] \label{representation_matrix}
+$n$次元ベクトル空間 $V$ の基底を $B_V = \{\bm{v}_1, \bm{v}_2, \ldots, \bm{v}_n\}$ とし、$m$次元ベクトル空間 $W$ の基底を $B_W = \{\bm{w}_1, \bm{w}_2, \ldots, \bm{w}_m\}$ とする。線形写像 $f: V \to W$ の\emph{表現行列 (representation matrix)} $\bm{A}$ とは、各基底ベクトル $\bm{v}_j$ の像 $f(\bm{v}_j)$ を基底 $B_W$ に関する座標ベクトルとして表し、それを第 $j$ 列に並べた $m \times n$ 行列のことである。
 \end{dfn}
 
 具体的には、$V$ の各基底ベクトル $\bm{v}_j$ の像 $f(\bm{v}_j)$ を $W$ の基底 $B_W$ で表すと、
@@ -78,7 +68,6 @@ f(\bm{v}_2) &= a_{12}\bm{w}_1 + a_{22}\bm{w}_2 + \dots + a_{m2}\bm{w}_m\\
 \vdots \\
 f(\bm{v}_n) &= a_{1n}\bm{w}_1 + a_{2n}\bm{w}_2 + \dots + a_{mn}\bm{w}_m
 \end{align*}
-
 このとき、これらの係数 $a_{ij}$ を並べた行列が表現行列 $\bm{A}$ です。
 \[
 \bm{A} = \begin{pmatrix}
@@ -90,34 +79,33 @@ a_{m1} & a_{m2} & \cdots & a_{mn}
 \]
 この行列 $\bm{A}$ の $j$ 列目は、$f(\bm{v}_j)$ の $B_W$ に関する座標ベクトルになります。
 
-\begin{thm}[線形写像の行列による表現]
-線形写像 $f: V \to W$ の基底 $B_V$ と $B_W$ に関する表現行列を $\bm{A}$ とする。
-このとき、任意のベクトル $\bm{x} \in V$ を基底 $B_V$ で表した座標ベクトルを $[\bm{x}]_{B_V}$ とし、$f(\bm{x}) \in W$ を基底 $B_W$ で表した座標ベクトルを $[f(\bm{x})]_{B_W}$ とすると、以下の関係が成り立ちます。
+\begin{thm}[線形写像の行列による表現] \label{matrix_representation_of_linear_map}
+線形写像 $f: V \to W$ の基底 $B_V$ と $B_W$ に関する表現行列を $\bm{A}$ とする。このとき、任意のベクトル $\bm{x} \in V$ を基底 $B_V$ で表した座標ベクトルを $[\bm{x}]_{B_V}$ とし、$f(\bm{x}) \in W$ を基底 $B_W$ で表した座標ベクトルを $[f(\bm{x})]_{B_W}$ とすると、以下の関係が成り立ちます。
 \[[f(\bm{x})]_{B_W} = \bm{A} [\bm{x}]_{B_V}\]
 \begin{proof*}[アイデア]
-この定理の証明は、線形写像の線形性（定義 6.1）と、基底によるベクトルの表現の一意性（定義 5.1 と定理 5.1）に基づいて行われます。ベクトル $\bm{x}$ を基底 $B_V$ の線形結合で表し、それに $f$ を作用させると、線形性により $f(\bm{x})$ が基底ベクトルの像 $f(\bm{v}_j)$ の線形結合になります。そして、これらの $f(\bm{v}_j)$ を基底 $B_W$ で表し直すことで、結果的に行列の積の形にまとめられることを示します。
+この定理の証明は、線形写像の線形性（定義\ref{linear_map}）と、基底によるベクトルの表現の一意性（定義\ref{basis}と定理\ref{existence_and_uniqueness_of_basis}）に基づいて行われます。ベクトル $\bm{x}$ を基底 $B_V$ の線形結合で表し、それに $f$ を作用させると、線形性により $f(\bm{x})$ が基底ベクトルの像 $f(\bm{v}_j)$ の線形結合になります。そして、これらの $f(\bm{v}_j)$ を基底 $B_W$ で表し直すことで、結果的に行列の積の形にまとめられることを示します。
 \end{proof*}
 \end{thm}
 
 \begin{ex}[2次元平面上の回転写像の表現行列]
-$\theta = \pi/2$ （90度）の回転写像 $f: \mathbb{R}^2 \to \mathbb{R}^2$ を考えます。
-標準基底 $B = \{\bm{e}_1, \bm{e}_2\} = \left\{ \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right\}$ を使います。
+$\theta = \pi/2$の回転写像 $f: \mathbb{R}^2 \to \mathbb{R}^2$ を考えます。標準基底 $B = \{\bm{e}_1, \bm{e}_2\} = \left\{ \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right\}$ を使います。
 \begin{enumerate}
 \item 基底ベクトル $\bm{e}_1$ の像を計算します:
-    $f(\bm{e}_1) = f\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 1\cos(\pi/2) - 0\sin(\pi/2) \\ 1\sin(\pi/2) + 0\cos(\pi/2) \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$
+    \[f(\bm{e}_1) = f\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 1\cos(\pi/2) - 0\sin(\pi/2) \\ 1\sin(\pi/2) + 0\cos(\pi/2) \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\]
     これを基底 $B$ で表すと、$0\bm{e}_1 + 1\bm{e}_2$ となるので、座標ベクトルは $\begin{pmatrix} 0 \\ 1 \end{pmatrix}$ です。
 \item 基底ベクトル $\bm{e}_2$ の像を計算します:
-    $f(\bm{e}_2) = f\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0\cos(\pi/2) - 1\sin(\pi/2) \\ 0\sin(\pi/2) + 1\cos(\pi/2) \end{pmatrix} = \begin{pmatrix} -1 \\ 0 \end{pmatrix}$
+    \[f(\bm{e}_2) = f\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0\cos(\pi/2) - 1\sin(\pi/2) \\ 0\sin(\pi/2) + 1\cos(\pi/2) \end{pmatrix} = \begin{pmatrix} -1 \\ 0 \end{pmatrix}\]
     これを基底 $B$ で表すと, $-1\bm{e}_1 + 0\bm{e}_2$ となるので、座標ベクトルは $\begin{pmatrix} -1 \\ 0 \end{pmatrix}$ です。
 \end{enumerate}
-
 これらの座標ベクトルを列として並べると、回転写像の表現行列 $\bm{A}$ が得られます。
 \[\bm{A} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\]
-この行列を使えば、任意のベクトル $\bm{x} = \begin{pmatrix} x \\ y \end{pmatrix}$ を回転させた結果を、単に行列の積で計算できます。$$f(\bm{x}) = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} -y \\ x \end{pmatrix}$$
-これは確かに、$(x,y)$ を90度回転させた結果と一致します。
+この行列を使えば、任意のベクトル $\bm{x} = \begin{pmatrix} x \\ y \end{pmatrix}$ を回転させた結果を、単に行列の積で計算できます。
+\[f(\bm{x}) = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} -y \\ x \end{pmatrix}\]
+これは確かに、$(x,y)$ を$\pi/2$回転させた結果と一致します。
 \end{ex}
 
 \subsection{練習問題}
+
 \begin{quiz}
 次の写像が線形写像であるかどうかを判定しなさい。線形写像である場合は、その証明も簡潔に示しなさい。
 \begin{enumerate}
