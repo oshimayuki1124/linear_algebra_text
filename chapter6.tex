@@ -88,20 +88,26 @@ a_{m1} & a_{m2} & \cdots & a_{mn}
 \end{thm}
 
 \begin{ex}[2次元平面上の回転写像の表現行列]
-$\theta = \pi/2$の回転写像 $f: \mathbb{R}^2 \to \mathbb{R}^2$ を考えます。標準基底 $B = \{\bm{e}_1, \bm{e}_2\} = \left\{ \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right\}$ を使います。
+$f: \mathbb{R}^2 \to \mathbb{R}^2$ を、ベクトルを角度 $\theta$ だけ反時計回りに回転させる写像と考えます。標準基底 $B = \{\bm{e}_1, \bm{e}_2\} = \left\{ \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right\}$ を使います。原点からの点 $(x, y)$ を角度 $\theta$ だけ反時計回りに回転させた新しい点の座標は $(x\cos\theta - y\sin\theta, x\sin\theta + y\cos\theta)$ となります。
 \begin{enumerate}
 \item 基底ベクトル $\bm{e}_1$ の像を計算します:
-    \[f(\bm{e}_1) = f\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 1\cos(\pi/2) - 0\sin(\pi/2) \\ 1\sin(\pi/2) + 0\cos(\pi/2) \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\]
-    これを基底 $B$ で表すと、$0\bm{e}_1 + 1\bm{e}_2$ となるので、座標ベクトルは $\begin{pmatrix} 0 \\ 1 \end{pmatrix}$ です。
+    \[f(\bm{e}_1) = f\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 1\cos\theta - 0\sin\theta \\ 1\sin\theta + 0\cos\theta \end{pmatrix} = \begin{pmatrix} \cos\theta \\ \sin\theta \end{pmatrix}\]
+    これを基底 $B$ で表すと、$\cos\theta \cdot \bm{e}_1 + \sin\theta \cdot \bm{e}_2$ となるので、座標ベクトルは $\begin{pmatrix} \cos\theta \\ \sin\theta \end{pmatrix}$ です。
+
 \item 基底ベクトル $\bm{e}_2$ の像を計算します:
-    \[f(\bm{e}_2) = f\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0\cos(\pi/2) - 1\sin(\pi/2) \\ 0\sin(\pi/2) + 1\cos(\pi/2) \end{pmatrix} = \begin{pmatrix} -1 \\ 0 \end{pmatrix}\]
-    これを基底 $B$ で表すと, $-1\bm{e}_1 + 0\bm{e}_2$ となるので、座標ベクトルは $\begin{pmatrix} -1 \\ 0 \end{pmatrix}$ です。
+    \[f(\bm{e}_2) = f\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0\cos\theta - 1\sin\theta \\ 0\sin\theta + 1\cos\theta \end{pmatrix} = \begin{pmatrix} -\sin\theta \\ \cos\theta \end{pmatrix}\]
+    これを基底 $B$ で表すと、$-\sin\theta \cdot \bm{e}_1 + \cos\theta \cdot \bm{e}_2$ となるので、座標ベクトルは $\begin{pmatrix} -\sin\theta \\ \cos\theta \end{pmatrix}$ です。
 \end{enumerate}
 これらの座標ベクトルを列として並べると、回転写像の表現行列 $\bm{A}$ が得られます。
-\[\bm{A} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\]
-この行列を使えば、任意のベクトル $\bm{x} = \begin{pmatrix} x \\ y \end{pmatrix}$ を回転させた結果を、単に行列の積で計算できます。
-\[f(\bm{x}) = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} -y \\ x \end{pmatrix}\]
-これは確かに、$(x,y)$ を$\pi/2$回転させた結果と一致します。
+\[\bm{A} = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}\]
+この行列を使えば、任意のベクトル $\bm{x} = \begin{pmatrix} x \\ y \end{pmatrix}$ を角度 $\theta$ だけ回転させた結果を、単に行列の積で計算できます。
+\[f(\bm{x}) = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x\cos\theta - y\sin\theta \\ x\sin\theta + y\cos\theta \end{pmatrix}\]
+これは確かに、$(x,y)$ を角度 $\theta$ 回転させた結果と一致します。\par
+\emph{特定の角度の例: $\theta = \pi/2$ の場合}:\\
+上記で導出した一般の表現行列に $\theta = \pi/2$ を代入すると、
+$\cos(\pi/2) = 0$, $\sin(\pi/2) = 1$ なので、
+\[\bm{A} = \begin{pmatrix} \cos(\pi/2) & -\sin(\pi/2) \\ \sin(\pi/2) & \cos(\pi/2) \end{pmatrix} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\]
+となります。
 \end{ex}
 
 \subsection{練習問題}
